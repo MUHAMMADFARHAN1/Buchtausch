@@ -1,22 +1,28 @@
 import mongoose from "mongoose";
 
-const bookSchema = new mongoose.Schema(
+const offerSchema = new mongoose.Schema(
   {
+    Description: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
+      unique: true,
     },
-    author: {
-      type: String,
-      required: true,
-    },
-    genre: {
-      type: String,
-      required: true,
+    books: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Book",
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+    },
+    status: {
+      type: String,
+      enum: ["open", "closed"],
+      default: "open",
     },
   },
   {
@@ -30,7 +36,7 @@ const bookSchema = new mongoose.Schema(
 // The reposnsbility of creating and naming collection should be done by moongose in plural is better
 
 //export default mongoose.model("Product", productSchema);
-export default mongoose.model("Books", bookSchema, "Books");
+export default mongoose.model("Offer", offerSchema, "Offers");
 
 // E11000 duplicate key error collection: Books.Products index: slug_1 dup key: { slug: null }
 // happens when the schema is fixed on mongoDB side and can only be fixed by deleting the DB altogether.

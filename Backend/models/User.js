@@ -11,23 +11,44 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    password: {
+    city: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    avatar: {
       type: String,
       required: true,
     },
-    role: {
+    phone: {
+      type: Number,
+      required: true,
+      unique: true,
+    },
+    password: {
       type: String,
-      enum: ["user", "admin", "customer"],
-      default: "user",
+      required: true,
     },
     verified: {
       type: Boolean,
       default: false,
     },
-    products: [
+    books: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
+        ref: "Book",
+      },
+    ],
+    offers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Offer",
+      },
+    ],
+    interests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Interest",
       },
     ],
     // createdAt: {
