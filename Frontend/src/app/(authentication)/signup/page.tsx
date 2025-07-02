@@ -42,7 +42,7 @@ export default function page() {
         <input
           {...register("firstname")}
           placeholder="First Name"
-          className=" bg-[#23155b] rounded py-1 text-white placeholder:p-2"
+          className=" bg-e rounded py-1 text-white placeholder:p-2"
         />
         {errors?.firstname?.message && (
           <p className="text-red-700 mb-4">{errors.firstname.message}</p>

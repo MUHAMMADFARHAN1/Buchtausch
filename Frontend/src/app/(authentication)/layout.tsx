@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./../globals.css";
 import Image from "next/image";
 import coding from "./../../assets/coding.png";
+import book from "./../../assets/book.png";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +26,11 @@ export default function AuthenticationLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="grid grid-cols-2 h-screen min-w-full">
-      <div className=" bg-[#23155b] ">
-        <Image src={coding} className="m-auto pt-35" alt="" />
+    <div className="grid grid-cols-2 h-screen min-w-full ">
+      <div className=" bg-emerald-100">
+        <Image src={book} className="m-auto" alt="" />
       </div>
-      <div className=" bg-[#f4f4f4] ">{children}</div>
+      <div className=" bg-emerald-500 ">{children}</div>
     </div>
   );
 }
