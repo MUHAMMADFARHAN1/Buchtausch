@@ -42,7 +42,7 @@ export default function page() {
         <input
           {...register("firstname")}
           placeholder="First Name"
-          className=" bg-e rounded py-1 text-white placeholder:p-2"
+          className=" bg-emerald-800 rounded py-1 text-white placeholder:p-2"
         />
         {errors?.firstname?.message && (
           <p className="text-red-700 mb-4">{errors.firstname.message}</p>
@@ -50,7 +50,7 @@ export default function page() {
         <input
           {...register("lastname")}
           placeholder="Last Name"
-          className=" bg-[#23155b] rounded py-1 text-white placeholder:p-2"
+          className=" bg-emerald-800 rounded py-1 text-white placeholder:p-2"
         />
         {errors?.lastname?.message && (
           <p className="text-red-700 mb-4">{errors.lastname.message}</p>
@@ -58,7 +58,7 @@ export default function page() {
         <input
           {...register("email")}
           placeholder="Email"
-          className=" bg-[#23155b] rounded py-1 text-white placeholder:p-2"
+          className=" bg-emerald-800 rounded py-1 text-white placeholder:p-2"
         />
         {errors?.email?.message && (
           <p className="text-red-700 mb-4">{errors.email.message}</p>
@@ -66,12 +66,12 @@ export default function page() {
         <input
           {...register("password")}
           placeholder="Password"
-          className=" bg-[#23155b] rounded py-1 text-white placeholder:p-2"
+          className=" bg-emerald-800 rounded py-1 text-white placeholder:p-2"
         />
         {errors?.password?.message && (
           <p className="text-red-700 mb-4">{errors.password.message}</p>
         )}
-        <button type="submit" className="bg-blue-600">
+        <button type="submit" className="bg-lime-600">
           Sign Up
         </button>
       </form>

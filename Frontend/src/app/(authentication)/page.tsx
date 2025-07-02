@@ -39,29 +39,27 @@ export default function page() {
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
           <input
             {...register("email")}
-            //   type="email"
             placeholder="Email"
-            className=" bg-[#23155b]  rounded py-1 text-white placeholder:p-1"
+            className=" bg-emerald-800  rounded py-1 text-white placeholder:p-1"
           />
           {errors?.email?.message && (
             <p className="text-red-700 mb-4">{errors.email.message}</p>
           )}
           <input
             {...register("password")}
-            //  type="password"
             placeholder="Password"
-            className=" bg-[#23155b]  rounded py-1 text-white placeholder:p-1"
+            className=" bg-emerald-800  rounded py-1 text-white placeholder:p-1"
           />
           {errors?.password?.message && (
             <p className="text-red-700 mb-4">{errors.password.message}</p>
           )}
-          <button type="submit" className="bg-blue-600 rounded">
+          <button type="submit" className=" bg-lime-600 rounded">
             Login
           </button>
         </form>
         <div>
           <p>
-            New to CodeCLA? <Link href="/signup">Signup</Link>
+            New to BuchTausch? <Link href="/signup">Signup</Link>
           </p>
         </div>
       </div>
