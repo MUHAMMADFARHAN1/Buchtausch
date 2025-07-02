@@ -1,0 +1,7 @@
+The design system used shall be ShadCN.
+The colour Scheme will be as follows:
+
+
+Primary Colour (Green): #4CAF50
+Secondary Colour (Yellow): #E8D8BC
+Tertiary Colour (LimeGreen): #32CD32

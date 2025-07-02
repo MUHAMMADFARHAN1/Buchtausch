@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.6">
+  <diagram name="Page-1" id="NHt3zPmAxSiYd6D0VtWS">
+    <mxGraphModel dx="1097" dy="592" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120.5" y="80" width="175" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-2" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="120" as="sourcePoint" />
+            <mxPoint x="295" y="120.43000000000006" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-3" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;User&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="180" y="83" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-4" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+&amp;nbsp; First Name: String&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;&amp;nbsp;&lt;font style=&quot;font-size: 14px;&quot;&gt;+&amp;nbsp; Last Name: String&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+&amp;nbsp; Email: String&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+&amp;nbsp; Password: String&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+&amp;nbsp; Avatar: String&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="123" y="160" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-5" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120.5" y="230" as="sourcePoint" />
+            <mxPoint x="295.5" y="230.43" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-7" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="430.5" y="83" width="175" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-8" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="123" as="sourcePoint" />
+            <mxPoint x="605" y="123.43000000000006" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-9" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Books&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="490" y="86" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-10" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+&amp;nbsp; Title: String&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;&amp;nbsp;&lt;font style=&quot;font-size: 14px;&quot;&gt;+&amp;nbsp; Author: String&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+&amp;nbsp; Price: Number&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+&amp;nbsp; Genre: String&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="433" y="163" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-11" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430.5" y="233" as="sourcePoint" />
+            <mxPoint x="605.5" y="233.43000000000006" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-12" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="123.5" y="320" width="175" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-13" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="123" y="360" as="sourcePoint" />
+            <mxPoint x="298" y="360.43000000000006" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-14" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Offers&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="177" y="326" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-15" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+ Description: String&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+ Slug&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+&amp;nbsp; book: Book[1]&lt;/font&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+ Status: enum&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp; &amp;nbsp; [open, closed]&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="126" y="387" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-16" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="123.5" y="450" as="sourcePoint" />
+            <mxPoint x="298.5" y="450.43000000000006" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-17" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="430.5" y="320" width="175" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-18" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="360" as="sourcePoint" />
+            <mxPoint x="605" y="360.43000000000006" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-19" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Deals&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="490" y="323" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-20" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+ Offer: Offers[1]&lt;/font&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+ Slug&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;+ bookoffered: Book[1]&lt;br&gt;&lt;/span&gt;&lt;div&gt;&amp;nbsp;&lt;font style=&quot;font-size: 14px;&quot;&gt;+&amp;nbsp; Status: enum&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;[pending, accetped,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; rejected]&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="431.5" y="397" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-21" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430.5" y="470" as="sourcePoint" />
+            <mxPoint x="605.5" y="470.43000000000006" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-24" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="295" y="170" as="sourcePoint" />
+            <mxPoint x="432" y="170.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-25" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="PcaxNzE2ub5Gm2_PYDUc-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="204.47" y="250" as="sourcePoint" />
+            <mxPoint x="208" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-27" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.631;entryY=-0.001;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="PcaxNzE2ub5Gm2_PYDUc-17" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="253" as="sourcePoint" />
+            <mxPoint x="540" y="303" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-28" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="380" as="sourcePoint" />
+            <mxPoint x="430" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-30" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="293" y="138" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-31" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="200.63" y="253" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-32" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="510.63" y="295" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-33" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="326" as="sourcePoint" />
+            <mxPoint x="320" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-34" value="" style="endArrow=none;html=1;rounded=0;entryX=-0.009;entryY=0.868;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="PcaxNzE2ub5Gm2_PYDUc-7" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="230" as="sourcePoint" />
+            <mxPoint x="360" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-35" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="299.88" y="326" as="sourcePoint" />
+            <mxPoint x="319.88" y="326" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-36" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="293" y="298" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-37" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="399.25" y="210" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-38" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="510.63" y="253" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-39" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="40" as="sourcePoint" />
+            <mxPoint x="680" y="40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-40" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="40" as="sourcePoint" />
+            <mxPoint x="680" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-41" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="605.5" y="399.47" as="sourcePoint" />
+            <mxPoint x="680" y="399.47" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-43" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="41" as="sourcePoint" />
+            <mxPoint x="280" y="80" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-44" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="298.5" y="353" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-45" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="397" y="353" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-46" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="250" y="55" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-47" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1..*&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="397" y="138" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-48" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1..*&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="605.5" y="370" width="33.75" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PcaxNzE2ub5Gm2_PYDUc-49" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1..*&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="210" y="295" width="33.75" height="25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
