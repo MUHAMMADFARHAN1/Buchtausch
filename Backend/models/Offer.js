@@ -24,6 +24,12 @@ const offerSchema = new mongoose.Schema(
       enum: ["open", "closed"],
       default: "open",
     },
+    interests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Interest",
+      },
+    ],
   },
   {
     timestamps: true,
