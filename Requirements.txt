@@ -1,6 +1,7 @@
-1. User is able to create his profile with First Name, Last Name, Email, Password and Avatar
+1. User is able to create his profile with First Name, Last Name, Email, Password and Avatar (no image upload needed)
 2. User is able to login with Username and Password.
 3. User is able to signin with Google as well.
+4. User will have to be verified with an email as well. (on signup it will be false)
 
 4. User is able to upload his books with Title, Author, Price, Genre and Picture
 5. User is able to edit and view the Books in his Inventory
@@ -10,3 +11,11 @@
 
 8. User is able to view all the deals and offers he has accepted or made.
 9. Theme toggle at the moment is optional.
+
+10. When someone creates an account they dont upload the image but we use Avatar.
+
+Offer, what kind? enum, exchange or sell? (no selling ecahnge)
+Deal should remove rejected, deal call interest, then offer becomes closed,
+price removed from the book to prevent selling for now
+
+add phone number and city
