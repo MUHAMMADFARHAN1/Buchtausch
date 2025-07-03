@@ -4,7 +4,7 @@
 4. User will have to be verified with an email as well. (on signup it will be false)
 
 4. User is able to upload his books with Title, Author, Price, Genre and Picture
-5. User is able to edit and view the Books in his Inventory. (Initiallz editing books is not allowed)
+5. User is able to delete and view the Books in his Inventory. (Initiallz editing books is not allowed)
 
 6. User is able to create Offers which can then be seen by other Users.
 7. User is able to accept the Offers from others as deals and view them.
