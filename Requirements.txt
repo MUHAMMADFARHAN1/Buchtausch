@@ -10,7 +10,7 @@
 7. User is able to accept the Offers from others as deals and view them.
 
 8. User is able to view all the deals and offers he has accepted or made.
-9. Theme toggle at the moment is optional.
+9. Theme toggle at the moment is optional. (Not Required)
 
 10. When someone creates an account they dont upload the image but we use Avatar.
 
