@@ -13,6 +13,7 @@
 9. Theme toggle at the moment is optional. (Not Required)
 
 10. When someone creates an account they dont upload the image but we use Avatar.
+11. When Offer and Interest match, the books will be swapped and a notification email will be send out.
 
 Offer, what kind? enum, exchange or sell? (no selling ecahnge)
 Deal should remove rejected, deal call interest, then offer becomes closed,
