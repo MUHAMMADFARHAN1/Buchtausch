@@ -11,7 +11,7 @@ const offerSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    books: {
+    book: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Book",
     },
@@ -24,12 +24,12 @@ const offerSchema = new mongoose.Schema(
       enum: ["open", "closed"],
       default: "open",
     },
-    interests: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Interest",
-      },
-    ],
+//  interests: [
+ //     {
+ //       type: mongoose.Schema.Types.ObjectId,
+ //       ref: "Interest",
+ //     },
+ //   ],
   },
   {
     timestamps: true,
