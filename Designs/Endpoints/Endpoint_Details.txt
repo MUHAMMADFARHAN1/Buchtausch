@@ -1,0 +1,31 @@
+Endpoints:
+
+1. /User/AllOffers - Get request to this endpoint returns all the offers which are not from the user himself.
+
+2. /User/AllOffers/showInterest/:offerid - PUT request here modifies the offer and makes it for us
+
+3. /User/Profile - GET request here returns all of the users data
+
+4. /User/Profile/edit - PUT request here modifies the suer data
+
+5. /User/Books - GET request here returns all the books owned by the user.
+
+6. /User/Books/create - POST request here creates a new book for the user.
+
+7. /User/Books/delete/:id - DELTE request here deletes the book from the boom database and updates user database.
+
+8. /User/MyOffers - GET Request here fetches all the Offers from the current user.
+
+9. /User/MyOffers/create - POST Request here creates a new offer from the user in the database.
+
+9. /User/MyOffers/delete:offerid - DELETE Request here removes the offer from the database.
+
+10. /User/MyOffer/:offerid - GET request here fetches the details of relevant offer.
+
+11. /User/MyOffer/Interests/:offerid - GET Request here fetches all the Offer Ids associated with the 
+
+12. /User/MyOffer/Interests/accept/:interested - PUT request her swaps the books and sends notifications to the users.
+
+13. /User/MyOffer/Interests/fetch/:interested - GET request here fetches the details of the interest
+
+- Slug and Database ID here are the same.
