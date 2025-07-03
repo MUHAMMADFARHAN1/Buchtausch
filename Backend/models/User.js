@@ -33,24 +33,24 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    books: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Book",
-      },
-    ],
-    offers: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Offer",
-      },
-    ],
-    interests: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Interest",
-      },
-    ],
+  //  books: [
+  //    {
+  //      type: mongoose.Schema.Types.ObjectId,
+  //      ref: "Book",
+  //    },
+  //  ],
+  //  offers: [
+  //    {
+  //      type: mongoose.Schema.Types.ObjectId,
+  //      ref: "Offer",
+  //    },
+  //  ],
+ //   interests: [
+  //    {
+  //      type: mongoose.Schema.Types.ObjectId,
+  //      ref: "Interest",
+  //    },
+  //  ],
     // createdAt: {
     //   type: Date,
     //   default: new Date(),
