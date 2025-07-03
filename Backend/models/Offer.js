@@ -19,11 +19,11 @@ const offerSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    status: {
-      type: String,
-      enum: ["open", "closed"],
-      default: "open",
-    },
+//    status: {
+//      type: String,
+//      enum: ["open", "closed"],
+//      default: "open",
+//    },
 //  interests: [
  //     {
  //       type: mongoose.Schema.Types.ObjectId,
