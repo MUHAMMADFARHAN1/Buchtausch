@@ -15,16 +15,11 @@ const interestSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Book",
     },
-    status: {
-      type: String,
-      enum: ["open", "closed"],
-      default: "open",
-    },
     offer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Offer",
     },
-    from_user: {
+    user_interested: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },

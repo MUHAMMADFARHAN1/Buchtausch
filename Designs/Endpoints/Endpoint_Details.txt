@@ -1,0 +1,33 @@
+Endpoints:
+
+1. /User/AllOffers - GET request to this endpoint returns all the offers which are not from the user himself.
+
+2. /User/AllOffers/showInterest/:offerid - PUT request here modifies the offer from the other user and shows our interest.
+
+3. /User/Profile - GET request here returns all of the users data
+
+4. /User/Profile/edit - PUT request here modifies the user data
+
+5. /User/Books - GET request here returns all the books owned by the user.
+
+6. /User/Books/create - POST request here creates a new book for the user.
+
+7. /User/Books/delete/:id - DELTE request here deletes the book from the book database and updates user database.
+
+8. /User/MyOffers - GET Request here fetches all the Offers from the current user.
+
+9. /User/MyOffers/create - POST Request here creates a new offer from the user in the database.
+
+9. /User/MyOffers/delete:offerid - DELETE Request here removes the offer from the database.
+
+10. /User/MyOffers/:offerid - GET request here fetches the details of relevant offer.
+
+11. /User/MyOffers/Interests/:offerid - GET Request here fetches all the interest Ids associated with the Offer
+
+12. /User/MyOffers/Interests/accept/:interested - PUT request her swaps the books and sends notifications to the users.
+
+13. /User/MyOffers/Interests/fetch/:interested - GET request here fetches the details of the interest
+
+- Slug and Database ID here are the same.
+- Database model needs readjustment a bit
+- Book verification will have validation check here
