@@ -1,0 +1,19 @@
+/       - leads to the login landing page
+
+/signup - leads to Signup landing page
+
+/Books  - leads to the page showing all the books in our inventory
+
+/Books/create - leads to a page where we can create our own book
+
+/Offers - leads to page showing all the offers
+
+/Offers/create - upon clicking create offer, leads to page where we can create an offer
+
+/Offers/allinterests/interest -  upon clicking details on all interests leads to page where can accept an offer
+
+/Offers/showinterest - upon clicking show interest on some else offer leads to page 
+
+/Offers/allinterests - upon pressing all interests tab on the book show all interested people in it
+
+/Profile - leads to page where we can see our details and 
