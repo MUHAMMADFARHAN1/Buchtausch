@@ -5,6 +5,7 @@ import Image from "next/image";
 import coding from "./../../assets/coding.png";
 
 import Menu from "../../components/menu";
+import Sidebar from "@/components/sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,10 @@ export default function AuthenticationLayout({
   return (
     <>
       <Menu />
-      {children}
+      <div className="grid grid-cols-10">
+        <Sidebar />
+        <div className="col-span-9">{children}</div>
+      </div>
     </>
   );
 }
