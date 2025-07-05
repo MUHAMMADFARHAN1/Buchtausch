@@ -32,7 +32,7 @@ export default function AuthenticationLayout({
       <Menu />
       <div className="grid grid-cols-15">
         <Sidebar />
-        <div className="col-span-14 pl-4 pt-4">{children}</div>
+        <div className="col-span-14 pl-4 pt-4  bg-emerald-100">{children}</div>
       </div>
     </>
   );
