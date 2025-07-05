@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 function Sidebar() {
   return (
-    <div className=" py-4 w-full h-screen max-h-screen bg-[#f4f4f4] flex flex-column justify-between"></div>
+    <div className=" py-4 w-full h-screen max-h-screen min-h-[500px] min-w-[90px] flex flex-column justify-between  bg-emerald-500"></div>
   );
 }
 
