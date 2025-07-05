@@ -30,9 +30,9 @@ export default function AuthenticationLayout({
   return (
     <>
       <Menu />
-      <div className="grid grid-cols-10">
+      <div className="grid grid-cols-15">
         <Sidebar />
-        <div className="col-span-9">{children}</div>
+        <div className="col-span-14 pl-4 pt-4">{children}</div>
       </div>
     </>
   );
