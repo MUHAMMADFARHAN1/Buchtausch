@@ -1,0 +1,26 @@
+1. Authentication actions
+   - Login
+   - Logout
+   - is authenticated to be used for protecting the pages.
+
+2. Signup Action
+   - server action which creates the user in the database
+
+3 Books
+   - a server action which will fetch all the books of a user.
+
+4. Offers
+   - a server action which will create an offer (causes toast if offer invalid)
+   - a server action which will fetch all the offers in the database
+   - a server action which will fetch all details of particular offer
+   - a server action which will fetch all user offers in the database
+
+5. Interests
+   - a server action which will fetch all interests tied to particular offer.
+   - a server action which will fetch interest tied to a particular offer.
+   - a server action to accept a particular interest.
+   - a server action to generate an interest in the database.
+
+
+6. Profile
+   - a server action to fetch details of the profile
