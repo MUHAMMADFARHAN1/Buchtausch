@@ -6,6 +6,8 @@
 
 /Books/create - leads to a page where we can create our own book
 
+/Books/show - leads to a page where we can see our own book
+
 /Offers - leads to page showing all the offers
 
 /Offers/create - upon clicking create offer, leads to page where we can create an offer
@@ -16,4 +18,4 @@
 
 /Offers/allinterests - upon pressing all interests tab on the book show all interested people in it
 
-/Profile - leads to page where we can see our details and 
+/Profile - leads to page where we can see our details and modify them as well

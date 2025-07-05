@@ -28,11 +28,18 @@ export default async function page() {
   // console.log(challenges);
   return (
     <>
-      <p>Your challenges</p>
-      <Button>
-        <Link href="/Challenge">New Challenge</Link>
-      </Button>
-      <div></div>
+      <div className="flex flex-col justify-between mx-8 pt-2">
+        <div className="flex flex-row justify-between pt-2">
+          <Button className=" bg-lime-600 rounded">All Offers</Button>
+          <Button className=" bg-lime-600 rounded">My Offers</Button>
+        </div>
+        <div className="flex flex-col justify-between pt-2">
+          <p>all my books</p>
+          <p>sfdsfdsfds</p>
+          <p>sfwqer</p>
+          <p> qe32ewqre</p>
+        </div>
+      </div>
     </>
   );
 }
