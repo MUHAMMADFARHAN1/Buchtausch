@@ -24,3 +24,5 @@
 
 6. Profile
    - a server action to fetch details of the profile
+
+7. Server Action for validation tied to an endpoint.
