@@ -8,9 +8,9 @@
 
 /Books/show - leads to a page where we can see our own book - optional for now, show is slug of the book only
 
-/Offers - leads to page showing all the offers
+/Offers - leads to page showing all the offers from the other users.
 
-/Offers/create - upon clicking create offer, leads to page where we can create an offer
+/Offers/create - upon clicking create offer, leads to page where we can create an offer (optional for now)
 
 /Offers/allinterests/interest -  upon clicking details on all interests leads to page where can accept an offer
 
@@ -18,6 +18,6 @@
 
 /Offers/allinterests - upon pressing all interests tab on the book show all interested people in it
 
-/Profile - leads to page where we can see our details and modify them as well
+/Profile - leads to page where we can see our details and modify them as well (modify part optional for now)
 
 frontend routes shoudl be lowercase always
