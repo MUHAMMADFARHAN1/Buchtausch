@@ -6,7 +6,7 @@
 
 /Books/create - leads to a page where we can create our own book
 
-/Books/show - leads to a page where we can see our own book - optional for now
+/Books/show - leads to a page where we can see our own book - optional for now, show is slug of the book only
 
 /Offers - leads to page showing all the offers
 
