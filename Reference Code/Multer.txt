@@ -1,0 +1,190 @@
+use multer to uplaod form image in express.js:
+
+1. Install Multer:
+npm install multer
+
+2. Create your Express server with Multer setup:
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+
+const app = express();
+
+// Set storage engine
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads/'); // folder to save images
+  },
+  filename: function (req, file, cb) {
+    // Generate unique filename with original extension
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+// File filter to accept only images
+const fileFilter = (req, file, cb) => {
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb('Error: Images Only!');
+  }
+};
+
+// Init upload
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB max
+  fileFilter: fileFilter
+});
+
+// Middleware to parse form data
+app.use(express.urlencoded({ extended: true }));
+
+// Route to serve a simple upload form
+app.get('/', (req, res) => {
+  res.send(`
+    <h2>Upload Image</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" />
+      <button type="submit">Upload</button>
+    </form>
+  `);
+});
+
+// Route to handle image upload
+app.post('/upload', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.send('No file uploaded or invalid file type.');
+  }
+  res.send(`File uploaded successfully: ${req.file.filename}`);
+});
+
+// Start server
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+
+
+How it works:
+multer.diskStorage sets the destination folder and filename for uploaded files.
+
+The fileFilter ensures only image files (jpeg, jpg, png, gif) are accepted.
+
+The upload middleware upload.single('image') handles the file from the form field named "image".
+
+The simple form uses enctype="multipart/form-data" which is required for file uploads.
+
+Uploaded images get saved in the /uploads directory.
+
+Make sure you:
+Create an /uploads folder in your project root or modify the path as you want.
+
+Run the server and open http://localhost:3000 in your browser to test.
+
+------------------------------------------------------------------------------------------
+also take user name and store it in MongoDB 
+
+. Install Required Packages
+npm install express multer mongoose
+
+✅ 2. Folder Structure
+
+project/
+│
+├── uploads/               # Image upload folder
+├── models/
+│   └── User.js            # Mongoose model
+├── app.js                 # Main server file
+
+✅ 3. Mongoose Model (models/User.js)
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true
+  },
+  imagePath: {
+    type: String,
+    required: true
+  }
+});
+
+module.exports = mongoose.model('User', userSchema);
+
+✅ 4. Main Server File (app.js)
+const express = require('express');
+const mongoose = require('mongoose');
+const multer = require('multer');
+const path = require('path');
+const User = require('./models/User');
+
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/imageUploadDB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => console.log('MongoDB connected'))
+  .catch(err => console.error(err));
+
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads'));
+
+// Storage config for multer
+const storage = multer.diskStorage({
+  destination: './uploads',
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB max
+  fileFilter: (req, file, cb) => {
+    const allowed = /jpeg|jpg|png/;
+    const isValid = allowed.test(file.mimetype) && allowed.test(path.extname(file.originalname).toLowerCase());
+    if (isValid) cb(null, true);
+    else cb(new Error('Only JPG, JPEG, and PNG files are allowed.'));
+  }
+});
+
+// Upload route
+app.post('/upload', upload.single('image'), async (req, res) => {
+  try {
+    const { username } = req.body;
+    const imagePath = `/uploads/${req.file.filename}`;
+
+    const newUser = new User({ username, imagePath });
+    await newUser.save();
+
+    res.json({ message: 'User saved with image', user: newUser });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+✅ 5. HTML Form to Upload
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Upload Image with Username</h2>
+    <form action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
+      <input type="text" name="username" placeholder="Enter your name" required />
+      <br><br>
+      <input type="file" name="image" required />
+      <br><br>
+      <button type="submit">Upload</button>
+    </form>
+  </body>
+</html>
+
+
