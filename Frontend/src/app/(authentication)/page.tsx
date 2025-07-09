@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { login } from "./../../api/auth";
 
 export default function page() {
   const FormSchema = z.object({
@@ -28,8 +29,13 @@ export default function page() {
     resolver: zodResolver(FormSchema),
   });
 
-  const onSubmit = (data: IFormInput) => {
+  const onSubmit = async (data: IFormInput) => {
     console.log(data);
+    try {
+      await login(data);
+    } catch (error) {
+      alert("Wrong Credentials");
+    }
   };
 
   return (
