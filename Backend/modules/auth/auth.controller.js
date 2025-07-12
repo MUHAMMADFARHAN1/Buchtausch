@@ -5,14 +5,22 @@ import { JWT_KEY } from "../../config/variables.js";
 
 export const signup = async (request, response) => {
   try {
-    let { name, email, password, role } = request.body;
+    let { name, email, city, avatar, phone, password, verified } = request.body;
     // Check if user has an account
     let user = await User.findOne({ email });
     if (user) return response.status(400).send("User already exists");
     // Hashing password
     let hashedPassword = await bcrypt.hash(password, 10);
     // Saving user in database
-    user = await User.create({ name, email, password: hashedPassword, role });
+    user = await User.create({
+      name,
+      email,
+      city,
+      avatar,
+      phone,
+      password: hashedPassword,
+      verified,
+    });
     response.send(user);
   } catch (error) {
     console.log(error.message);
