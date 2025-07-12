@@ -34,9 +34,9 @@ export const getInterests = async (request, response) => {
     // Check if user has an account
     // let user = await User.findById(decoded.id);
 
-    let { id } = request.params;
+    let { offerid } = request.params;
 
-    let interest = await Interest.find({ offer: id });
+    let interest = await Interest.find({ offer: offerid });
     return response.send(interest);
   } catch (error) {
     return response.status(500).send("Server Error");
@@ -72,6 +72,7 @@ export const showinterest = async (request, response) => {
     console.log("Hello");
 
     let { offer } = request.params;
+    console.log(offer);
 
     //let books = await Book.findById(book);
     //console.log("Hello");
@@ -107,11 +108,11 @@ export const showinterest = async (request, response) => {
 
 //https://stackoverflow.com/questions/76980190/how-do-i-delete-a-document-in-mongodb-using-mongoose-in-node-js
 export const acceptinterest = async (request, response) => {
-  let { id } = request.params;
+  let { interestid } = request.params;
 
-  let interest = await Interest.findByIdAndDelete(id);
+  let interest = await Interest.findByIdAndDelete(interestid);
   if (!interest) return response.status(404).send("Book not found");
 
   //  const result = await User.findByIdAndDelete(id);
-  response.status(202).send(`Book deleted: ${id}`);
+  response.status(202).send(`Book deleted: ${interestid}`);
 };

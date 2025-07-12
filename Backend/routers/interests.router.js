@@ -13,7 +13,7 @@ const router = express.Router();
 // router.get("/", AuthGuard, getOffers);
 
 // get all interests for an offer with offerid
-router.get("/:id", AuthGuard, getInterests);
+router.get("/:offerid", AuthGuard, getInterests);
 
 //get  interests with interest id
 router.get("/:id", AuthGuard, fetchinterests);
@@ -22,10 +22,10 @@ router.get("/:id", AuthGuard, fetchinterests);
 //router.get("/:slug", getBook);
 
 //show interest with an offer id
-router.post("/showInterest/:id", AuthGuard, showinterest);
+router.post("/showInterest/:offer", AuthGuard, showinterest);
 
 //accept interst shown by other user which will cause deletion
-router.delete("/accept/:id", AuthGuard, acceptinterest);
+router.delete("/accept/:interestid", AuthGuard, acceptinterest);
 
 // router.put("/:id", AuthGuard, updateOffer);
 
