@@ -49,9 +49,10 @@ export const getBook = async (request, response) => {
   //This is find one
   //let Book = await Book.findOne({ id });
   //The alternative is, this is more performant as well
-  let Book = await Book.find({ id });
-  if (!Book) return response.status(404).send("Book not found");
-  return response.send(Book);
+  //let Book = await Book.find({ id });
+  let book = await Book.findById(id);
+  if (!book) return response.status(404).send("Book not found");
+  return response.send(book);
 };
 
 export const createBook = async (request, response) => {
