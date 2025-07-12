@@ -1,4 +1,7 @@
 import Book from "../../models/Book.js";
+import User from "../../models/User.js";
+import { JWT_KEY } from "../../config/variables.js";
+import jwt from "jsonwebtoken";
 
 // export const getBooks = async (request, response) => {
 //   try {
@@ -47,9 +50,13 @@ export const createBook = async (request, response) => {
   try {
     // let { name, description, price, quantity, createdAt } = request.body;
     let { title, author, genre } = request.body;
-    let userId = request.headers.authorization;
-    // I check if user is authorized
-    if (!userId) return response.status(401).send("Unauthorized");
+    //let userId = request.headers.authorization;
+    let token = request.headers.authorization;
+    // Decoding token
+    let decoded = jwt.verify(token, JWT_KEY);
+    // Check if user has an account
+    let user = await User.findById(decoded.id);
+
     // I generate slug from title
     // let slug =  name.replaceAll(" ", "-").toLowerCase() + "-" + new Date().getTime();
     // I create the Book
@@ -57,6 +64,7 @@ export const createBook = async (request, response) => {
       title,
       author,
       genre,
+      user,
     });
     response.status(201).send(`Book created successfully`);
   } catch (error) {

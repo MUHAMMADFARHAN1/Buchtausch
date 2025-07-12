@@ -6,20 +6,21 @@ import {
   getBooks,
   updateBook,
 } from "../modules/book/book.controller.js";
+import { AuthGuard, RoleGuard } from "../modules/auth/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/", getBooks);
+router.get("/", AuthGuard, getBooks);
 
-router.get("/:id", getBook);
+router.get("/:id", AuthGuard, getBook);
 
 //The slug is for findone method not for id where it will work
 //router.get("/:slug", getBook);
 
-router.post("/", createBook);
+router.post("/create", AuthGuard, createBook);
 
-router.put("/:id", updateBook);
+router.put("/:id", AuthGuard, updateBook);
 
-router.delete("/:id", deleteBook);
+router.delete("/delete", AuthGuard, deleteBook);
 
 export default router;
