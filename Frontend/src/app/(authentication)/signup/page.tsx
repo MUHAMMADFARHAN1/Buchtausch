@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signup } from "./../../../api/auth";
 import * as z from "zod";
 
 export default function page() {
@@ -12,7 +13,8 @@ export default function page() {
       .string()
       .email("Invalid email. Email must be a valid email address"),
     city: z.string().min(2, "City must be atleast 2 characters"),
-    phone: z.number().min(4, "Phone must be atleast 2 numbers"),
+    // phone: z.number().min(4, "Phone must be atleast 2 numbers"),
+    phone: z.string(),
     password: z
       .string()
       .min(6, "Password must not be lesser than 6 characters"),
@@ -30,6 +32,7 @@ export default function page() {
 
   const onSubmit = (data: IFormInput) => {
     console.log(data);
+    signup(data);
   };
 
   return (

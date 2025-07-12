@@ -13,6 +13,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@reduxjs/toolkit": "^2.8.2",
     "@types/jsonwebtoken": "^9.0.10",
+    "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "feather-icons": "^4.29.2",
