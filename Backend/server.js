@@ -2,9 +2,10 @@ import express from "express";
 //import authRouter from "./routers/auth.router.js";
 import bookRouter from "./routers/book.router.js";
 import authRouter from "./routers/auth.router.js";
-import userRouter from "./routers/users.router.js";
+//import userRouter from "./routers/users.router.js";
 import userProfile from "./routers/profile.router.js";
 import userOffers from "./routers/offers.router.js";
+import userInterests from "./routers/interests.router.js";
 import { startDatabase } from "./config/db.js";
 
 const app = express();

@@ -4,7 +4,7 @@ import {
   fetchinterests,
   showinterest,
   acceptinterest,
-  deleteinterest,
+  // deleteinterest,
 } from "../modules/interests/interests.controller.js";
 import { AuthGuard, RoleGuard } from "../modules/auth/auth.middleware.js";
 

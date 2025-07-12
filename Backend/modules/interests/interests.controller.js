@@ -68,7 +68,7 @@ export const showinterest = async (request, response) => {
     // Decoding token
     let decoded = jwt.verify(token, JWT_KEY);
     // Check if user has an account
-    user_interested = await User.findById(decoded.id);
+    let user_interested = await User.findById(decoded.id);
     console.log("Hello");
 
     let { offer } = request.params;

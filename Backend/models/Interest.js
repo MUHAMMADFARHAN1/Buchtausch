@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const interestSchema = new mongoose.Schema(
   {
-    Description: {
+    description: {
       type: String,
       required: true,
     },
     title: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     book: {
       type: mongoose.Schema.Types.ObjectId,
