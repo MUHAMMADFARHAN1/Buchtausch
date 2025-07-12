@@ -1,12 +1,14 @@
 "use server";
 
 import { auth, signIn, signOut } from "@/auth";
-import axios from "axios";
+//import axios from "axios";
+//import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 //import { auth, signIn, signOut } from "./../../auth";
 
 export const signup = async (data: any) => {
-  console.log("hello");
+  // console.log("hello");
   let { name, email, city, phone, password } = data;
   try {
     const response: any = await fetch("http://localhost:5001/auth/signup", {
@@ -28,6 +30,7 @@ export const signup = async (data: any) => {
   } catch (error) {
     console.error("Error:", error);
   }
+  redirect("/");
 };
 
 export const login = async ({ email, password }: any) => {
