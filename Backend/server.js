@@ -4,6 +4,7 @@ import bookRouter from "./routers/book.router.js";
 import authRouter from "./routers/auth.router.js";
 import userRouter from "./routers/users.router.js";
 import userProfile from "./routers/profile.router.js";
+import userOffers from "./routers/offers.router.js";
 import { startDatabase } from "./config/db.js";
 
 const app = express();
@@ -12,11 +13,10 @@ app.use(express.json());
 
 app.use("/auth", authRouter);
 app.use("/Books", bookRouter);
-//app.use("/users", userRouter);
 
 app.use("/Profile", userProfile);
 
-// app.use("/MyOffers", userRouter);
+app.use("/MyOffers", userOffers);
 // app.use("/AllOffers", userRouter);
 
 app.listen(5001, async () => {

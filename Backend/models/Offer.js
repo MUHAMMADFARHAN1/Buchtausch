@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const offerSchema = new mongoose.Schema(
   {
-    Description: {
+    description: {
       type: String,
       required: true,
     },
@@ -31,7 +31,7 @@ const offerSchema = new mongoose.Schema(
 // The reposnsbility of creating and naming collection should be done by moongose in plural is better
 
 //export default mongoose.model("Product", productSchema);
-export default mongoose.model("Offer", offerSchema, "Offers");
+export default mongoose.model("Offers", offerSchema, "Offers");
 
 // E11000 duplicate key error collection: Books.Products index: slug_1 dup key: { slug: null }
 // happens when the schema is fixed on mongoDB side and can only be fixed by deleting the DB altogether.

@@ -11,7 +11,7 @@ const interestSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    books: {
+    book: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Book",
     },

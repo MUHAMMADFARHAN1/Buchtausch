@@ -1,5 +1,6 @@
-import Book from "../../models/Book.js";
+import Offers from "../../models/Offer.js";
 import User from "../../models/User.js";
+import Book from "../../models/Book.js";
 import { JWT_KEY } from "../../config/variables.js";
 import jwt from "jsonwebtoken";
 
@@ -23,7 +24,7 @@ import jwt from "jsonwebtoken";
 // };
 
 //Basic fetching
-export const getBooks = async (request, response) => {
+export const getOffers = async (request, response) => {
   try {
     //let userId = request.headers.authorization;
     let token = request.headers.authorization;
@@ -32,14 +33,14 @@ export const getBooks = async (request, response) => {
     // Check if user has an account
     let user = await User.findById(decoded.id);
 
-    let Books = await Book.find({ user }).populate("user");
-    return response.send(Books);
+    let Offer = await Offers.find({ user }).populate("book");
+    return response.send(Offer);
   } catch (error) {
     return response.status(500).send("Server Error");
   }
-}; 
+};
 
-export const getBook = async (request, response) => {
+export const getOffer = async (request, response) => {
   let { id } = request.params;
   console.log(id);
   // In case you are fetching with id
@@ -50,29 +51,33 @@ export const getBook = async (request, response) => {
   //let Book = await Book.findOne({ id });
   //The alternative is, this is more performant as well
   //let Book = await Book.find({ id });
-  let book = await Book.findById(id);
-  if (!book) return response.status(404).send("Book not found");
-  return response.send(book);
+  let Offer = await Offers.findById(id).populate("book");
+  if (!Offer) return response.status(404).send("Book not found");
+  return response.send(Offer);
 };
 
-export const createBook = async (request, response) => {
+export const createOffer = async (request, response) => {
   try {
     // let { name, description, price, quantity, createdAt } = request.body;
-    let { title, author, genre } = request.body;
+    let { description, title, book } = request.body;
     //let userId = request.headers.authorization;
     let token = request.headers.authorization;
     // Decoding token
     let decoded = jwt.verify(token, JWT_KEY);
     // Check if user has an account
     let user = await User.findById(decoded.id);
+    console.log("Hello");
+
+    //let books = await Book.findById(book);
+    //console.log("Hello");
 
     // I generate slug from title
     // let slug =  name.replaceAll(" ", "-").toLowerCase() + "-" + new Date().getTime();
     // I create the Book
-    await Book.create({
+    await Offers.create({
+      description,
       title,
-      author,
-      genre,
+      book,
       user,
     });
     response.status(201).send(`Book created successfully`);
@@ -84,22 +89,22 @@ export const createBook = async (request, response) => {
 
 // https://mongoosejs.com/docs/tutorials/findoneandupdate.html
 //https://kb.objectrocket.com/mongo-db/how-to-use-the-mongoose-findoneandupdate-method-925
-export const updateBook = async (request, response) => {
+export const updateOffer = async (request, response) => {
   let { id } = request.params;
-  let { title, author, genre } = request.body;
+  let { description, title, book } = request.body;
 
   let body = request.body;
-  await Book.findOneAndUpdate({ _id: id }, { title, author, genre });
+  await Offers.findOneAndUpdate({ _id: id }, { description, title, book });
 
   response.status(202).send(`Updating a Book of id: ${id} with data: ${body}`);
 };
 
 //https://stackoverflow.com/questions/76980190/how-do-i-delete-a-document-in-mongodb-using-mongoose-in-node-js
-export const deleteBook = async (request, response) => {
+export const deleteOffer = async (request, response) => {
   let { id } = request.params;
 
-  let Book = await Book.findByIdAndDelete(id);
-  if (!Book) return response.status(404).send("Book not found");
+  let Offer = await Offers.findByIdAndDelete(id);
+  if (!Offer) return response.status(404).send("Book not found");
 
   //  const result = await User.findByIdAndDelete(id);
   response.status(202).send(`Book deleted: ${id}`);
