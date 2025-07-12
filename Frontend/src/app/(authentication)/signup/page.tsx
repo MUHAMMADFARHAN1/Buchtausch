@@ -7,11 +7,12 @@ import * as z from "zod";
 
 export default function page() {
   const FormSchema = z.object({
-    firstname: z.string().min(6, "First name must be atleast 2 characters"),
-    lastname: z.string().min(6, "First name must be atleast 2 characters"),
+    name: z.string().min(2, "First name must be atleast 2 characters"),
     email: z
       .string()
       .email("Invalid email. Email must be a valid email address"),
+    city: z.string().min(2, "City must be atleast 2 characters"),
+    phone: z.number().min(4, "Phone must be atleast 2 numbers"),
     password: z
       .string()
       .min(6, "Password must not be lesser than 6 characters"),
@@ -40,20 +41,12 @@ export default function page() {
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
-          {...register("firstname")}
-          placeholder="First Name"
+          {...register("name")}
+          placeholder="Name"
           className=" bg-emerald-800 rounded py-1 text-white placeholder:p-2"
         />
-        {errors?.firstname?.message && (
-          <p className="text-red-700 mb-4">{errors.firstname.message}</p>
-        )}
-        <input
-          {...register("lastname")}
-          placeholder="Last Name"
-          className=" bg-emerald-800 rounded py-1 text-white placeholder:p-2"
-        />
-        {errors?.lastname?.message && (
-          <p className="text-red-700 mb-4">{errors.lastname.message}</p>
+        {errors?.name?.message && (
+          <p className="text-red-700 mb-4">{errors.name.message}</p>
         )}
         <input
           {...register("email")}
@@ -62,6 +55,22 @@ export default function page() {
         />
         {errors?.email?.message && (
           <p className="text-red-700 mb-4">{errors.email.message}</p>
+        )}
+        <input
+          {...register("city")}
+          placeholder="City"
+          className=" bg-emerald-800 rounded py-1 text-white placeholder:p-2"
+        />
+        {errors?.city?.message && (
+          <p className="text-red-700 mb-4">{errors.city.message}</p>
+        )}
+        <input
+          {...register("phone")}
+          placeholder="Phone"
+          className=" bg-emerald-800 rounded py-1 text-white placeholder:p-2"
+        />
+        {errors?.phone?.message && (
+          <p className="text-red-700 mb-4">{errors.phone.message}</p>
         )}
         <input
           {...register("password")}

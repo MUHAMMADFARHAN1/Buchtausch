@@ -11,7 +11,9 @@ app.use(express.json());
 
 app.use("/auth", authRouter);
 app.use("/Books", bookRouter);
-app.use("/users", userRouter);
+//app.use("/users", userRouter);
+app.use("/MyOffers", userRouter);
+app.use("/AllOffers", userRouter);
 
 app.listen(5001, async () => {
   await startDatabase();
