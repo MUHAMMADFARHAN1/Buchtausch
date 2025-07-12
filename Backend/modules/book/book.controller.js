@@ -25,7 +25,14 @@ import jwt from "jsonwebtoken";
 //Basic fetching
 export const getBooks = async (request, response) => {
   try {
-    let Books = await Book.find();
+    //let userId = request.headers.authorization;
+    let token = request.headers.authorization;
+    // Decoding token
+    let decoded = jwt.verify(token, JWT_KEY);
+    // Check if user has an account
+    let user = await User.findById(decoded.id);
+
+    let Books = await Book.find({ user });
     return response.send(Books);
   } catch (error) {
     return response.status(500).send("Server Error");
@@ -34,6 +41,7 @@ export const getBooks = async (request, response) => {
 
 export const getBook = async (request, response) => {
   let { id } = request.params;
+  console.log(id);
   // In case you are fetching with id
   // let Book = await Book.findById(id)
 
@@ -41,7 +49,7 @@ export const getBook = async (request, response) => {
   //This is find one
   //let Book = await Book.findOne({ id });
   //The alternative is, this is more performant as well
-  let Book = await Book.findById(id);
+  let Book = await Book.find({ id });
   if (!Book) return response.status(404).send("Book not found");
   return response.send(Book);
 };
@@ -77,13 +85,10 @@ export const createBook = async (request, response) => {
 //https://kb.objectrocket.com/mongo-db/how-to-use-the-mongoose-findoneandupdate-method-925
 export const updateBook = async (request, response) => {
   let { id } = request.params;
-  let { name, description, price, quantity, createdAt } = request.body;
+  let { title, author, genre } = request.body;
 
   let body = request.body;
-  await Book.findOneAndUpdate(
-    { _id: id },
-    { name, description, price, quantity, createdAt }
-  );
+  await Book.findOneAndUpdate({ _id: id }, { title, author, genre });
 
   response.status(202).send(`Updating a Book of id: ${id} with data: ${body}`);
 };

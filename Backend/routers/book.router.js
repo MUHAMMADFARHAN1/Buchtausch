@@ -21,6 +21,6 @@ router.post("/create", AuthGuard, createBook);
 
 router.put("/:id", AuthGuard, updateBook);
 
-router.delete("/delete", AuthGuard, deleteBook);
+router.delete("/delete/:id", AuthGuard, deleteBook);
 
 export default router;
