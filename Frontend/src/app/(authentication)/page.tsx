@@ -30,10 +30,10 @@ export default function page() {
   });
 
   const onSubmit = async (data: IFormInput) => {
-    console.log(data);
+    //console.log(data);
     try {
-      await login(data);
-    } catch (error) {
+      return await login(data);
+    } catch {
       alert("Wrong Credentials");
     }
   };
