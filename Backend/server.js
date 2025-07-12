@@ -18,6 +18,7 @@ app.use("/Profile", userProfile);
 
 app.use("/MyOffers", userOffers);
 // app.use("/AllOffers", userRouter);
+app.use("/Interests", userInterests);
 
 app.listen(5001, async () => {
   await startDatabase();
