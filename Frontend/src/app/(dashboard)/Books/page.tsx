@@ -76,14 +76,7 @@ function page() {
             <Button className=" bg-lime-600 rounded">Create Book</Button>
           </Link>
         </div>
-        <div className="flex flex-col justify-between pt-2">
-          <Card name={"books"} button={"check"} />
-          {/* <p>all my books</p>
-          <p>sfdsfdsfds</p>
-          <p>sfwqer</p>
-          <p> qe32ewqre</p> */}
-          {data}
-        </div>
+        <div className="flex flex-col justify-between pt-2">{data}</div>
       </div>
     </>
   );
