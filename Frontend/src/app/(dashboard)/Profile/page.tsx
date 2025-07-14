@@ -33,11 +33,50 @@ function page() {
         {/* <img src="" alt="" /> */}
         <p>hello</p>
       </div>
-      <div>
-        <p>World</p>
-        <form action="">
-          <input type="text" />
-        </form>
+      <div className="flex flex-col gap-10 mt-20">
+        <label>
+          Name:
+          <input
+            type="text"
+            name="username"
+            // value={baseData.username}
+            readOnly
+          />
+        </label>
+        <br />
+
+        <label>
+          Email:
+          <input
+            type="text"
+            name="profileUrl"
+            // value={baseData.profileUrl}
+            readOnly
+          />
+        </label>
+        <br />
+
+        <label>
+          City:
+          <input
+            type="text"
+            name="fullProfileUrl"
+            // value={fullProfileUrl}
+            readOnly
+          />
+        </label>
+        <br />
+
+        <label>
+          Phone:
+          <input
+            type="text"
+            name="fullProfileUrl"
+            // value={fullProfileUrl}
+            readOnly
+          />
+        </label>
+        <br />
       </div>
     </div>
   );
