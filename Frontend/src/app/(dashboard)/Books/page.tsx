@@ -6,6 +6,8 @@ import Link from "next/link";
 import Card from "@/components/card";
 
 function page() {
+
+  
   return (
     <>
       <div className="flex flex-col justify-between mx-8 pt-2">
