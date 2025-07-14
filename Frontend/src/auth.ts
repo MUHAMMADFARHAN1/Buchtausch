@@ -88,5 +88,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 function loginUserInBackend(email: string, password: string) {
   if (email == "omar@gmail.com") return { data: { email }, token: "" };
+  jwt;
   return null;
 }
