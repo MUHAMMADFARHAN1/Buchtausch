@@ -37,7 +37,7 @@ function page() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/data")
+    fetch("http://localhost:3000/api/books")
       .then((res) => {
         if (!res.ok) throw new Error("Fetch failed");
         return res.json();
