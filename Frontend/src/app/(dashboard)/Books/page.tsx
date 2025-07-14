@@ -32,21 +32,38 @@ import { useEffect, useState } from "react";
 // }
 
 function page() {
-  let jsona: any;
-  let listItems: any;
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("http://localhost:3000/api/data");
-      jsona = await res.json();
-      console.log(jsona);
-      listItems = jsona.map((jsona: any) => (
-        <Card name={jsona.title} button={"check"} />
-      ));
-    }
-
-    fetchData();
+    fetch("http://localhost:3000/api/data")
+      .then((res) => {
+        if (!res.ok) throw new Error("Fetch failed");
+        return res.json();
+      })
+      .then((jsonData) => {
+        let listItems = jsonData.map((item) => (
+          <Card name={item.title} button={"check"} />
+        ));
+        setData(listItems);
+        setLoading(false); // Fetch done, so set loading to false
+        console.log(jsonData);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    // Render this while loading (this blocks showing the rest)
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <>
@@ -65,7 +82,7 @@ function page() {
           <p>sfdsfdsfds</p>
           <p>sfwqer</p>
           <p> qe32ewqre</p> */}
-          {/* {listItems} */}
+          {data}
         </div>
       </div>
     </>
