@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Card from "@/components/card";
-import fetchDataFromApi from "./../../../../src/api/books";
+import fetchDataFromApi from "../../../api/fetchAuth";
 
 import { useEffect, useState } from "react";
 
@@ -38,8 +38,9 @@ function page() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch("/app/data");
+      const res = await fetch("http://localhost:3000/api/data");
       const json = await res.json();
+      console.log(json);
       setData(json);
     }
 

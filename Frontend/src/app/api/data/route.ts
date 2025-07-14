@@ -10,8 +10,7 @@ export async function GET() {
   const response = await fetch("http://127.0.0.1:5001/Books/", {
     method: "GET",
     headers: {
-      Authorization:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzIzYjkyN2Q5MWIzZGQxMzM3Y2EzNSIsImlhdCI6MTc1MjQ5MjI4OCwiZXhwIjoxNzUzMDk3MDg4fQ.jreLeoegO6BI8hKYBqy869lfK2oHxWRIK_0ffdFwawg",
+      Authorization: accessToken,
       //  Accept: "application/json",
     },
     mode: "cors",
@@ -19,5 +18,5 @@ export async function GET() {
 
   const array = await response.json();
   console.log(array);
-  return NextResponse.json({ response });
+  return NextResponse.json({ array });
 }
