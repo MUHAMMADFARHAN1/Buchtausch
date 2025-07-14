@@ -18,5 +18,5 @@ export async function GET() {
 
   const array = await response.json();
   console.log(array);
-  return NextResponse.json({ array });
+  return NextResponse.json(array);
 }

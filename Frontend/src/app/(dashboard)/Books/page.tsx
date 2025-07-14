@@ -32,16 +32,17 @@ import { useEffect, useState } from "react";
 // }
 
 function page() {
-  // await x();
-  // const data = fetchDataFromApi();
-  const [data, setData] = useState(null);
+  let jsona: any;
+  let listItems: any;
 
   useEffect(() => {
     async function fetchData() {
       const res = await fetch("http://localhost:3000/api/data");
-      const json = await res.json();
-      console.log(json);
-      setData(json);
+      jsona = await res.json();
+      console.log(jsona);
+      listItems = jsona.map((jsona: any) => (
+        <Card name={jsona.title} button={"check"} />
+      ));
     }
 
     fetchData();
@@ -60,10 +61,11 @@ function page() {
         </div>
         <div className="flex flex-col justify-between pt-2">
           <Card name={"books"} button={"check"} />
-          <p>all my books</p>
+          {/* <p>all my books</p>
           <p>sfdsfdsfds</p>
           <p>sfwqer</p>
-          <p> qe32ewqre</p>
+          <p> qe32ewqre</p> */}
+          {/* {listItems} */}
         </div>
       </div>
     </>
