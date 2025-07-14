@@ -7,8 +7,12 @@ import userProfile from "./routers/profile.router.js";
 import userOffers from "./routers/offers.router.js";
 import userInterests from "./routers/interests.router.js";
 import { startDatabase } from "./config/db.js";
+import cors from "cors";
 
 const app = express();
+
+// Enable CORS for all origins
+app.use(cors());
 
 app.use(express.json());
 
