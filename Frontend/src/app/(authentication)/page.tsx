@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { login } from "./../../api/auth";
+import { login, loginWithGoogle } from "./../../api/auth";
 
 export default function page() {
   const FormSchema = z.object({
@@ -33,6 +33,7 @@ export default function page() {
     //console.log(data);
     try {
       return await login(data);
+      // return await loginWithGoogle();
     } catch {
       alert("Wrong Credentials");
     }
@@ -41,7 +42,7 @@ export default function page() {
   return (
     <>
       <div className=" bg-white w-1/3 flex flex-col mx-auto mt-40 text-center gap-2 rounded py-8 px-2 min-w-min">
-        <p className="pb-4">Join Coders Now!</p>
+        <p className="pb-4">Join Buchwurms Now!</p>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
           <input
             {...register("email")}

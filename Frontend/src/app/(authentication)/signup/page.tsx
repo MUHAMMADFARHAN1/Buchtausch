@@ -37,7 +37,7 @@ export default function page() {
 
   return (
     <div className=" bg-white w-1/3 flex flex-col mx-auto mt-40 text-center gap-2 rounded py-8 px-2 min-w-min">
-      <p className="pb-4">Join Coders Now!</p>
+      <p className="pb-4">Join Buchwurms Now!</p>
       <form
         action=""
         className="flex flex-col gap-2"

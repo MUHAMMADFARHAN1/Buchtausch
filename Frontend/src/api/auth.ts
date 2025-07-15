@@ -42,6 +42,8 @@ export const login = async ({ email, password }: any) => {
 };
 
 export const loginWithGoogle = async () => {
+  console.log("AUTH_GOOGLE_ID:", process.env.AUTH_GOOGLE_ID);
+  console.log("AUTH_GOOGLE_SECRET:", process.env.AUTH_GOOGLE_SECRET);
   await signIn("google", { redirectTo: "/dashboard" });
 };
 
