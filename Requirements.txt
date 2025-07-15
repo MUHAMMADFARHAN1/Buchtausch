@@ -20,3 +20,7 @@ Deal should remove rejected, deal call interest, then offer becomes closed,
 price removed from the book to prevent selling for now
 
 add phone number and city
+
+two new endpoint will be needed in backend
+1. one for verifying the user based on the code send via email.
+2. one for Oauth based authentication process.
