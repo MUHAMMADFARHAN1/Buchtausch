@@ -30,8 +30,13 @@ export default async function page() {
     <>
       <div className="flex flex-col justify-between mx-8 pt-2">
         <div className="flex flex-row justify-between pt-2">
-          <Button className=" bg-lime-600 rounded">All Offers</Button>
-          <Button className=" bg-lime-600 rounded">My Offers</Button>
+          <Button className=" bg-lime-600 rounded">All (not my) Offers</Button>
+          <div className="flex flex-row justify-between gap-2">
+            <Link href={`/Offers/create`}>
+              <Button className=" bg-lime-600 rounded">Create Offer</Button>
+            </Link>
+            <Button className=" bg-lime-600 rounded">My Offers</Button>
+          </div>
         </div>
         <div className="flex flex-col justify-between pt-2">
           <p>all my books</p>
