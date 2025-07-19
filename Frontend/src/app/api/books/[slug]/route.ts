@@ -32,3 +32,39 @@ export async function GET(
 
   //   return NextResponse.json(book);
 }
+
+// DELETE: Delete book
+export async function DELETE(
+  request: Request,
+  { params }: { params: { slug: string } }
+) {
+  const slug = params.slug;
+
+  let session: any = await auth();
+  console.log(session.accessToken);
+  let accessToken = session.accessToken;
+
+  const response = await fetch(
+    "http://127.0.0.1:5001/books/deleteBook" + slug,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: accessToken,
+        //  Accept: "application/json",
+      },
+      mode: "cors",
+    }
+  );
+
+  //   const array = await response.json();
+  //   console.log(array);
+  //   return NextResponse.json(array);
+  return NextResponse.json("success");
+
+  //   if (!books[slug]) {
+  //     return NextResponse.json({ error: "Book not found" }, { status: 404 });
+  //   }
+
+  //   delete books[slug];
+  //   return NextResponse.json({ message: `Book '${slug}' deleted.` });
+}

@@ -37,7 +37,7 @@ export const getBooks = async (request, response) => {
   } catch (error) {
     return response.status(500).send("Server Error");
   }
-}; 
+};
 
 export const getBook = async (request, response) => {
   let { id } = request.params;
@@ -98,8 +98,12 @@ export const updateBook = async (request, response) => {
 export const deleteBook = async (request, response) => {
   let { id } = request.params;
 
-  let Book = await Book.findByIdAndDelete(id);
-  if (!Book) return response.status(404).send("Book not found");
+  console.log(id);
+
+  let book = await Book.findByIdAndDelete(id);
+  if (!book) return response.status(404).send("Book not found");
+
+  console.log("Deleted");
 
   //  const result = await User.findByIdAndDelete(id);
   response.status(202).send(`Book deleted: ${id}`);

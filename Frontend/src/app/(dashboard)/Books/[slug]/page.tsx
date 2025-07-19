@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 function page() {
   const params = useParams();
   const slug = params.slug; // returns '123' from /profile/123
-  console.log(slug);
+  // console.log(slug);
 
   const [title, setTitle] = useState("empty");
   const [author, setAuthor] = useState("empty");
@@ -36,6 +36,18 @@ function page() {
         setLoading(false);
       });
   }, []);
+
+  const Delete_Book = () => {
+    fetch("http://localhost:3000/api/books/" + slug, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      // body: JSON.stringify({ title, author, }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Response:", data);
+      });
+  };
 
   if (loading) {
     // Render this while loading (this blocks showing the rest)
@@ -97,7 +109,7 @@ function page() {
         {/* <br /> */}
         {/* <br /> */}
         <div>
-          <Button type="submit" className="mr-2 bg-lime-600">
+          <Button onClick={Delete_Book} className="mr-2 bg-lime-600">
             Delete
           </Button>
         </div>
