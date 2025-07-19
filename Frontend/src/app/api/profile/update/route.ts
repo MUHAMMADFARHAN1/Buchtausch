@@ -18,15 +18,7 @@ export async function PUT(request: NextRequest) {
       Authorization: accessToken,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      name: "Farhan123456",
-      email: "fara4n@hotmail.com",
-      city: "Karaci",
-      avatar: "https://api.dicebear.com/9.x/adventurer/svg?seed=Farhan",
-      phone: "457254",
-      password: "5088998",
-      verified: "true",
-    }),
+    body: JSON.stringify({ city, name, phone, email }),
     mode: "cors",
   });
 
