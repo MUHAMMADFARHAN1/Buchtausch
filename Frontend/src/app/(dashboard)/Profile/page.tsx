@@ -86,21 +86,18 @@ function page() {
           <br />
           <input type="text" name="username" value={name} readOnly />
         </label>
-        <br />
 
         <label>
           Email:
           <br />
           <input type="text" name="profileUrl" value={email} readOnly />
         </label>
-        <br />
 
         <label>
           City:
           <br />
           <input type="text" name="fullProfileUrl" value={city} readOnly />
         </label>
-        <br />
 
         <label>
           Phone:
