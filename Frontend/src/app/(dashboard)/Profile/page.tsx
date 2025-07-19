@@ -49,15 +49,16 @@ function page() {
         //   updatedAt: "2025-07-12T10:40:18.320Z",
         //   __v: 7,
         // });
-        setName(jsonData[0].name);
-        setEmail(jsonData[0].email);
-        setCity(jsonData[0].city);
-        setPhone(jsonData[0].phone);
-        setAvatar(avatar + jsonData[0].name);
         console.log(jsonData);
+        setName(jsonData.name);
+        setEmail(jsonData.email);
+        setCity(jsonData.city);
+        setPhone(jsonData.phone);
+        setAvatar(avatar + jsonData.name);
+        // console.log(jsonData);
         // console.log(data);
         // console.log(jsonData.name);
-        console.log(loading);
+        // console.log(loading);
         // document.getElementById("name").name = jsonData[0].name;
         // console.log(data);
       })
