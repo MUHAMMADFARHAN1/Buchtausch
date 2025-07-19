@@ -21,6 +21,9 @@ function page() {
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
+  const [avatar, setAvatar] = useState(
+    "https://api.dicebear.com/9.x/avataaars/svg?seed="
+  );
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
 
@@ -50,6 +53,7 @@ function page() {
         setEmail(jsonData[0].email);
         setCity(jsonData[0].city);
         setPhone(jsonData[0].phone);
+        setAvatar(avatar + jsonData[0].name);
         console.log(jsonData);
         // console.log(data);
         // console.log(jsonData.name);
@@ -121,7 +125,7 @@ function page() {
       <div>
         {/* <img src="" alt="" /> */}
         <img
-          src="https://api.dicebear.com/9.x/avataaars/svg?seed=Farhan"
+          src={avatar}
           alt="Profile"
           className="w-4/5"
           onError={(e) => (e.currentTarget.style.display = "none")} // Hide if invalid URL/image
