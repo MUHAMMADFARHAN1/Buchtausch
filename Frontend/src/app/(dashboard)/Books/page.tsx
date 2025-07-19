@@ -43,7 +43,7 @@ function page() {
         return res.json();
       })
       .then((jsonData) => {
-        let listItems = jsonData.map((item) => (
+        let listItems = jsonData.map((item: any) => (
           <Card name={item.title} button={"check"} />
         ));
         setData(listItems);
