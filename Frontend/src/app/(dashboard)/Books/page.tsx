@@ -44,8 +44,13 @@ function page() {
       })
       .then((jsonData) => {
         let listItems = jsonData.map((item: any) => (
-          <Link href="/Books/create">
-            <Card name={item.title} button={"check"} />
+          <Link href={`/Books/${item._id}`}>
+            <Card
+              name={item.title}
+              author={item.author}
+              genre={item.genre}
+              button={"check"}
+            />
           </Link>
         ));
         setData(listItems);

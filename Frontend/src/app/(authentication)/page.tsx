@@ -64,6 +64,7 @@ export default function page() {
             Login
           </button>
         </form>
+        <button className=" bg-lime-600 rounded">Login with Google</button>
         <div>
           <p>
             New to BuchTausch? <Link href="/signup">Signup</Link>
