@@ -3,13 +3,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 function page() {
   const params = useParams();
   const slug = params.slug; // returns '123' from /profile/123
   // console.log(slug);
+  const router = useRouter();
 
   const [title, setTitle] = useState("empty");
   const [author, setAuthor] = useState("empty");
@@ -49,7 +50,7 @@ function page() {
       .then((data) => {
         console.log("Response:", data);
       });
-    // router.push("/Books");
+    router.push("/Books");
   };
 
   if (loading) {
