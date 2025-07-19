@@ -108,17 +108,16 @@ function page() {
     console.log("Submitted email:", email);
 
     // You can send this data to a backend like this:
-    /*
-    fetch('/api/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email })
+
+    fetch("http://localhost:3000/api/profile/update", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ city, name, email, phone }),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log('Response:', data);
-    });
-    */
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Response:", data);
+      });
   };
 
   return (
