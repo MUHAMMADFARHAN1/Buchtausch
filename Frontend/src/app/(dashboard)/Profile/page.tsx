@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 function page() {
   // const [data, setData] = useState({
@@ -53,6 +54,7 @@ function page() {
         // console.log(data);
         // console.log(jsonData.name);
         console.log(loading);
+        // document.getElementById("name").name = jsonData[0].name;
         // console.log(data);
       })
       .catch((err) => {
@@ -60,6 +62,30 @@ function page() {
         setLoading(false);
       });
   }, []);
+
+  const handleChange = (e) => {
+    // let val = target.value;
+    // console.log(val);
+    // setMyInput(val);
+    // setOtherBox(val);
+  };
+
+  const handleNameChange = (e: any) => {
+    setName(e.target.value);
+  };
+
+  const handleEmailChange = (e: any) => {
+    setEmail(e.target.value);
+  };
+
+  const handleCityChange = (e: any) => {
+    setCity(e.target.value);
+  };
+
+  const handlePhoneChange = (e: any) => {
+    setPhone(e.target.value);
+  };
+
   if (loading) {
     // Render this while loading (this blocks showing the rest)
     return <div>Loading...</div>;
@@ -68,6 +94,27 @@ function page() {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault(); // Prevents page reload
+
+    // Access the input values from state
+    console.log("Submitted name:", name);
+    console.log("Submitted email:", email);
+
+    // You can send this data to a backend like this:
+    /*
+    fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log('Response:', data);
+    });
+    */
+  };
 
   return (
     <div className="grid grid-cols-2 mx-4">
@@ -81,30 +128,63 @@ function page() {
         />
       </div>
       <div className="flex flex-col gap-10 mt-20">
-        <label>
-          Name:
+        <form onSubmit={handleSubmit}>
+          <label>
+            Name:
+            <br />
+            <input
+              id="name"
+              type="text"
+              name="username"
+              value={name}
+              onChange={handleNameChange}
+            />
+          </label>
           <br />
-          <input type="text" name="username" value={name} readOnly />
-        </label>
+          <br />
 
-        <label>
-          Email:
+          <label>
+            Email:
+            <br />
+            <input
+              type="text"
+              name="profileUrl"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </label>
           <br />
-          <input type="text" name="profileUrl" value={email} readOnly />
-        </label>
+          <br />
 
-        <label>
-          City:
+          <label>
+            City:
+            <br />
+            <input
+              type="text"
+              name="fullProfileUrl"
+              value={city}
+              onChange={handleCityChange}
+            />
+          </label>
           <br />
-          <input type="text" name="fullProfileUrl" value={city} readOnly />
-        </label>
+          <br />
 
-        <label>
-          Phone:
+          <label>
+            Phone:
+            <br />
+            <input
+              type="text"
+              name="fullProfileUrl"
+              value={phone}
+              onChange={handlePhoneChange}
+            />
+          </label>
           <br />
-          <input type="text" name="fullProfileUrl" value={phone} readOnly />
-        </label>
-        <br />
+          <br />
+          <Button type="submit" className="mr-2 bg-lime-600">
+            Submit
+          </Button>
+        </form>
       </div>
     </div>
   );
