@@ -4,18 +4,22 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 function page() {
-  const [data, setData] = useState({
-    // _id: "68723b927d91b3dd1337ca35",
-    // name: "Muhammad Farhan",
-    // email: "farhan_75230@hotmail.com",
-    // city: "Coburg, Deutschland",
-    // phone: 1745277296,
-    // password: "$2b$10$3gy1BqpfcwnXtoiafNiCmO.7ER2qEA1n.DWcXBFJxnqGMuX2AvgV.",
-    // verified: false,
-    // createdAt: "2025-07-12T10:40:18.320Z",
-    // updatedAt: "2025-07-12T10:40:18.320Z",
-    // __v: 0,
-  });
+  // const [data, setData] = useState({
+  //   // _id: "68723b927d91b3dd1337ca35",
+  //   // name: "Muhammad Farhan",
+  //   // email: "farhan_75230@hotmail.com",
+  //   // city: "Coburg, Deutschland",
+  //   // phone: 1745277296,
+  //   // password: "$2b$10$3gy1BqpfcwnXtoiafNiCmO.7ER2qEA1n.DWcXBFJxnqGMuX2AvgV.",
+  //   // verified: false,
+  //   // createdAt: "2025-07-12T10:40:18.320Z",
+  //   // updatedAt: "2025-07-12T10:40:18.320Z",
+  //   // __v: 0,
+  // });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
+  const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
 
@@ -28,23 +32,28 @@ function page() {
       .then((jsonData) => {
         setLoading(false); // Fetch done, so set loading to false
         // let { city: string, name, phone, email } = jsonData;
-        setData({
-          _id: "68723b927d91b3dd1337ca35",
-          name: "Muhammad Farhan",
-          email: "farhan_75230@hotmail.com",
-          city: "Coburg, Deutschland",
-          phone: 1745277296,
-          password:
-            "$2b$10$3gy1BqpfcwnXtoiafNiCmO.7ER2qEA1n.DWcXBFJxnqGMuX2AvgV.",
-          verified: false,
-          createdAt: "2025-07-12T10:40:18.320Z",
-          updatedAt: "2025-07-12T10:40:18.320Z",
-          __v: 7,
-        });
+        // setData({
+        //   _id: "68723b927d91b3dd1337ca35",
+        //   name: "Muhammad Farhan",
+        //   email: "farhan_75230@hotmail.com",
+        //   city: "Coburg, Deutschland",
+        //   phone: 1745277296,
+        //   password:
+        //     "$2b$10$3gy1BqpfcwnXtoiafNiCmO.7ER2qEA1n.DWcXBFJxnqGMuX2AvgV.",
+        //   verified: false,
+        //   createdAt: "2025-07-12T10:40:18.320Z",
+        //   updatedAt: "2025-07-12T10:40:18.320Z",
+        //   __v: 7,
+        // });
+        setName(jsonData[0].name);
+        setEmail(jsonData[0].email);
+        setCity(jsonData[0].city);
+        setPhone(jsonData[0].phone);
         console.log(jsonData);
-        console.log(data);
+        // console.log(data);
+        // console.log(jsonData.name);
         console.log(loading);
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
         setError(err.message);
@@ -75,43 +84,28 @@ function page() {
         <label>
           Name:
           <br />
-          <input type="text" name="username" value={data.name} readOnly />
+          <input type="text" name="username" value={name} readOnly />
         </label>
         <br />
 
         <label>
           Email:
           <br />
-          <input
-            type="text"
-            name="profileUrl"
-            // value={baseData.profileUrl}
-            readOnly
-          />
+          <input type="text" name="profileUrl" value={email} readOnly />
         </label>
         <br />
 
         <label>
           City:
           <br />
-          <input
-            type="text"
-            name="fullProfileUrl"
-            // value={fullProfileUrl}
-            readOnly
-          />
+          <input type="text" name="fullProfileUrl" value={city} readOnly />
         </label>
         <br />
 
         <label>
           Phone:
           <br />
-          <input
-            type="text"
-            name="fullProfileUrl"
-            // value={fullProfileUrl}
-            readOnly
-          />
+          <input type="text" name="fullProfileUrl" value={phone} readOnly />
         </label>
         <br />
       </div>
