@@ -3,7 +3,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
 
 function page() {
@@ -14,6 +14,8 @@ function page() {
   const [title, setTitle] = useState("empty");
   const [author, setAuthor] = useState("empty");
   const [genre, setGenre] = useState("empty");
+
+  // const router = useRouter();
 
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
@@ -47,6 +49,7 @@ function page() {
       .then((data) => {
         console.log("Response:", data);
       });
+    // router.push("/Books");
   };
 
   if (loading) {

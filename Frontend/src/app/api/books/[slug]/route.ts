@@ -38,23 +38,22 @@ export async function DELETE(
   request: Request,
   { params }: { params: { slug: string } }
 ) {
-  const slug = params.slug;
+  //   console.log("params");
+  const { slug } = params;
+  //   console.log(params);
 
   let session: any = await auth();
   console.log(session.accessToken);
   let accessToken = session.accessToken;
 
-  const response = await fetch(
-    "http://127.0.0.1:5001/books/deleteBook" + slug,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: accessToken,
-        //  Accept: "application/json",
-      },
-      mode: "cors",
-    }
-  );
+  const response = await fetch("http://127.0.0.1:5001/books/delete/" + slug, {
+    method: "DELETE",
+    headers: {
+      Authorization: accessToken,
+      //  Accept: "application/json",
+    },
+    mode: "cors",
+  });
 
   //   const array = await response.json();
   //   console.log(array);
