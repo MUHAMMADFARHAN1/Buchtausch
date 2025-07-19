@@ -44,7 +44,9 @@ function page() {
       })
       .then((jsonData) => {
         let listItems = jsonData.map((item: any) => (
-          <Card name={item.title} button={"check"} />
+          <Link href="/Books/create">
+            <Card name={item.title} button={"check"} />
+          </Link>
         ));
         setData(listItems);
         setLoading(false); // Fetch done, so set loading to false

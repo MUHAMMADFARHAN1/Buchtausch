@@ -2,7 +2,7 @@
 
 import React from "react";
 
-function page() {
+function page({ params }: any) {
   return (
     <div className="grid grid-cols-2 pl-8 pt-4">
       <div>
