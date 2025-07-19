@@ -11,9 +11,40 @@ function page() {
   const slug = params.slug; // returns '123' from /profile/123
   console.log(slug);
 
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [genre, setGenre] = useState("");
+  const [title, setTitle] = useState("empty");
+  const [author, setAuthor] = useState("empty");
+  const [genre, setGenre] = useState("empty");
+
+  const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/books/" + slug)
+      .then((res) => {
+        if (!res.ok) throw new Error("Fetch failed");
+        return res.json();
+      })
+      .then((jsonData) => {
+        setLoading(false); // Fetch done, so set loading to false
+        console.log(jsonData);
+        setTitle(jsonData.title);
+        setAuthor(jsonData.author);
+        setGenre(jsonData.genre);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    // Render this while loading (this blocks showing the rest)
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="grid grid-cols-2 pl-8 pt-4">
@@ -30,7 +61,8 @@ function page() {
             id="name"
             type="text"
             name="username"
-            // value={name}
+            value={title}
+            readOnly
             // onChange={handleNameChange}
           />
         </label>
@@ -43,7 +75,8 @@ function page() {
           <input
             type="text"
             name="profileUrl"
-            // value={email}
+            value={author}
+            readOnly
             // onChange={handleEmailChange}
           />
         </label>
@@ -56,7 +89,8 @@ function page() {
           <input
             type="text"
             name="fullProfileUrl"
-            // value={city}
+            value={genre}
+            readOnly
             // onChange={handleCityChange}
           />
         </label>
