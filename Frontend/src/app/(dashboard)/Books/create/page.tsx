@@ -3,11 +3,14 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 function page() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
+
+  const router = useRouter();
 
   const handleTitleChange = (e: any) => {
     setTitle(e.target.value);
@@ -40,6 +43,7 @@ function page() {
       .then((data) => {
         console.log("Response:", data);
       });
+    router.push("/Books");
   };
 
   return (

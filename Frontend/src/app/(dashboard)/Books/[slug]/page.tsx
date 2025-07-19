@@ -2,9 +2,15 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+// import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
 
-function page({ params }: any) {
+function page() {
+  const params = useParams();
+  const slug = params.slug; // returns '123' from /profile/123
+  console.log(slug);
+
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
@@ -58,7 +64,7 @@ function page({ params }: any) {
         {/* <br /> */}
         <div>
           <Button type="submit" className="mr-2 bg-lime-600">
-            Create
+            Delete
           </Button>
         </div>
         {/* </form> */}
