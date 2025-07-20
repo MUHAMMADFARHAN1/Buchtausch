@@ -3,6 +3,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 function page() {
   // const [data, setData] = useState({
@@ -26,6 +27,8 @@ function page() {
   );
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     fetch("http://localhost:3000/api/profile")
@@ -118,6 +121,8 @@ function page() {
       .then((data) => {
         console.log("Response:", data);
       });
+
+    router.push("/Books");
   };
 
   return (
