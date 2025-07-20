@@ -1,18 +1,6 @@
 import React from "react";
-import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
-import Menu from "../../../components/menu";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Trash2, Edit } from "lucide-react";
 
 // export async function getChallenges() {
 //   const res = await fetch("http://localhost:2000/challenges");
