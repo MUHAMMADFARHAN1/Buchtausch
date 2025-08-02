@@ -26,6 +26,7 @@ import jwt from "jsonwebtoken";
 //Basic fetching
 export const getOffers = async (request, response) => {
   try {
+    console.log("Hello");
     //let userId = request.headers.authorization;
     let token = request.headers.authorization;
     // Decoding token
@@ -58,6 +59,7 @@ export const getOffer = async (request, response) => {
 
 export const createOffer = async (request, response) => {
   try {
+    console.log("Hello");
     // let { name, description, price, quantity, createdAt } = request.body;
     let { description, title, book } = request.body;
     //let userId = request.headers.authorization;

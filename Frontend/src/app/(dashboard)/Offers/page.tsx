@@ -1,19 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-// export async function getChallenges() {
-//   const res = await fetch("http://localhost:2000/challenges");
-//   const posts = await res.json();
-
-//   return posts;
-// }
+import Card from "@/components/MofferCard";
 
 //https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods
 
 export default async function page() {
-  //  const challenges = await getChallenges();
-  // console.log(challenges);
   return (
     <>
       <div className="flex flex-col justify-between mx-8 pt-2">
@@ -26,11 +18,9 @@ export default async function page() {
             <Button className=" bg-lime-600 rounded">My Offers</Button>
           </div>
         </div>
-        <div className="flex flex-col justify-between pt-2">
-          <p>all my books</p>
-          <p>sfdsfdsfds</p>
-          <p>sfwqer</p>
-          <p> qe32ewqre</p>
+        <div className="flex flex-col justify-between pt-8">
+          <Card offer="Offer" interest="Show Interest"></Card>
+          <Card offer="Offer" interest="All Interests"></Card>
         </div>
       </div>
     </>

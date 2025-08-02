@@ -88,5 +88,209 @@ Lab 3:
 - node eport endpoint will be srapped by Prometheus as well.
 
 
+------------------------------------------------------------------------------
+New Session:
+- infrastructure nd applciaiton monitoring tools and then promeheuns architeture
+- setp Prometheus on Linux
+- dokcer copose and docker with two contianers and then getprmetheus to get specific endoit nfo
+- nde exporter to get srver information as well.
 
+--------------------------------------
+- Now we configure the alerting for threshold on the nde and this creates email alert to send to right teams.
+- we need to install alert manage separaelty as well.
+- SMTPsetting we define in alert.yml file, smtp password needs to be generated from gmail account.
+- SMTP srve in our orgabiyartion in our demo e use gail present inside app itself
+- i route we etemail alert to sned an email,
+- receivers we setthe email id to ehcih to send alert. srver or network teams wll ave their repective id as well. snd resolved true means that when issue resolved, we will also et another email as well
+- to testwe stopped the node xporter service on monitored node. initial we had pending state to see i the node recovers or not
+- there are 3 states of alter: inctive, ending and firing.
+- w reset the service to check the resetnotifiction email as well.
+- we sawhow to setup alertfor taregtes e ar monitoring.
+- waiting time is always 1 minute but can be adjusted as well.
+-----------------------------------------------------------------------------
+- we saw interview questions as well
+- Nde exporer is for Linux but or windows we have windows exporter.
+- 9100 must be opene in security group as well
+- This as sumaryof everything in Prometheus.
+- L1 team looks afer the infrastrutre not devops theyare monitoring tams.
+- appl dmin and network teams willalso receive our alerts a well.
+- label for varios conditions cn be found in Prometheus documenaton as well. lae will e combo of both infrastrure nd pp,based on requirmenets customiyable s well.
+-recivers can be increased to ticketing szs as well as slcakc channels for a review.
+---------------------------------------------------------------------------------------------------------------------Grafana:
+- grap of serve rrelated metics we cna intgrate it ith promethues and get it a graph in Grafana console
+- add any node in Grafana, as data sources like prometheusor any other tool.
+- graphana can integrate with a lot of data sources like cloud watch as wll
+- graphana comunciate with prometheu without any issue as een in messag
+- now we will ceate  dashboard , add data sourc and then save the dashboard as well. server health dash board has cpu, memory io and disk utilizton s wlell.
+- w added nore widgets on our dashoads as well. but w need to ave the dashoard for it as well. memoryand cpu widgets for example
+- we had cpu and memorywidget in our dashboad as well.
+- load o app, av response of app, no f ecpeion in app will be major metrics for the application side.
 
+------------------------------------------------------------------------------ we configured EKS o AWS and saw how to configure promethes and grafnaa on Kubernetes clster as well using helm charts.
+-----------------------------------------
+- we saw slides of Prometheus and Grafana using helm
+-HELM is package manager for Kubernetes as well
+- install the package form rpeositories using the HELM char.
+- all YAML file and binaries is packaged inside of HELM chart.
+- HELM chat is bundle of YAML charts and we cna create our own as well.
+- we will setup HELM and connect it hub and then easily download the required files as well.
+- we will install the HEML manager on master node and then setup Grafana nad prometheus in Kubernetes as well.
+- helm repo add chartname charturl
+- most of our pplication are running as containers, hsted on kibernetes, if theyare running as contianes in same ludster kubenrets can easily disover all objets running in clyster, scrape metrics and provide visbility of all metrics a well. it give robust monitoring as it covers lcuster too.
+0dznatrace is one which cannot be one lusters, we refer proemtheus and grafa as deployment with helm chart is easier as wll there.
+- EKS cluster is facilitated bycloudformation templates or services.
+- 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- session 3
+- we now do IaC tools and in particular cloudformation.
+- defitnion, configurtaion file creation.
+- .tf for terraform, json yaml for ansible. iac to provision resouces within the cloud.
+- terraform and cloudformation is that cloudformation is native iac tool of AWS.
+- all resources are in cloud only as it is aws native infrastrure a a code tool.
+- terraform is platform or cloud provider agnostic.
+- 3 types of IAC tools:
+configuration management tools, server templating tools provisionng tools.
+- idempotent tonly chnages necessary are performed only.
+- provisioning tools deploy servers , databases and etc.
+- declarative templates for porviisoning and coniguring to be fed to cloud formation service.
+- stack is a grouping of resources in aws
+- differenc between templates and satcks: file fed to cloud engine is template, input to cloud formation servcie, stack is output when the resources are provisioned.
+- LAMP stack deployment example:
+. parameters contain meta information of the stack, the next section is the resources (without it deployment will fail), all other sections are optional but this is mandatory.
+- lifecycle object is for deletion and then migrate the data sfaely a well.
+- cloudformation cna parse both yaml and json format.
+- output will be an application endpoint if we launch the stack.
+- 30 lifecycle means objects inside s3 bucket will be dleeted after 30 days and it will be purged.
+----------------------------------------------------------------------
+- Intrinsic functions will come now:
+. nesting means one stack calls anothe stack.
+. wait conditions and helper scripts are advance features for cloud formaiton templates.
+. call third party api or external email and then invoke the 3rd party with custom resources.
+- Intrinsic functions: they help manage the stack, can be refered as part of cloduformaiton template.
+- join function to join the streams a well.
+- split function to split the streams.
+- conditional intrinsic funcitons, to evalute the conditons in the stack.
+- S3 bucket creation with join intrinsic function:
+. parameter to concate fed into reference section.
+--------------------------------------------------------------
+- nexted example where parametr of one stack are referencedd into another.
+- this helps in enhacing reusability of the stack as well.
+- This is how stak nesting works.
+- outputs will be application endpoints.
+- stack section mapping enabled stack to be used across multiple regions a well.
+- PHP application was there in output section of cloudformation
+- cliudformation stackset, across multiple AWS account.
+-----------------------------------------------------------------------------
+- cloud formation helper scripts:
+= send signals back to stack based on success or failure on EC2 instances.
+- 4 types of it in the slides.
+- can be reffered in templates directly.
+----------------------------------------------------------------------
+- helper scripts in lamp stack use:
+- Init helper script for lamp stack
+-------------------------------------------------------------------------
+- resource deletion policy
+- used to presevrce resources when stack is being deleted.
+- 3 deletion plicy, deletae, retain and snapshot.
+- delete is default opiton.
+- retain the resources will be presevred and need to be deleted manually
+- snapshot means a backup for the resources will be same a sretain with a snapshot. but chrage will eb there.
+
+-----------------------------------------------------------------------
+resource deletion policy example demo.
+
+-----------------------------------------------------------------------------
+- cloud formation custom resources
+. provision not supported by cloudformation sevrice and resources existing outside AWS platform.
+- lambda fucntions called by cloud formation. sns or email notification. 3rd arty api invocation.
+- service token property will have lambda functions in it.
+- 
+==========================================================
+- stack updates, EC2 configuration needs to be updated.
+- we cna simply update the existing stack template as well.
+- now fresh resources will be created the existing resources will be updated. It is idempotent concept here as well.
+- chnage ste and riect update policies are available as well, direct update cloud dpeloys a soon as you make the chnages.
+- three types of update proceudre: no interruption, some interruption an dreplacement.
+- The chnagesets, allow to preview chnage and decide f those changes should be applied or not.
+- once preview is ok we cna update the stack directly.
+- retain resources, those resources will be regtained as well. This is defined in the stack policy.
+- stack plcy allows us to prevent chnages to critical resource as well. like chnages of database can be avoided as well.
+------------------------------------------------------------------------------
+Best practies and triubleshooting:
+- trubleshooting is via logs and roollbakc prevention
+- grnvular perimisison in loudformation to be defined as well.
+- cloudtrail to lock the various resources being created.
+- do not hardcode passwords inside the template.
+- delay cna be used to intriducet delay in policy change like for chaging database.
+------------------------------------------------------------------------------
+Elastic Beanstalk:
+- beanstalk service is a service for scaling and deploying web applications.
+- dcker contianers app cn also be dpeloyed this way.
+- difference is the inputs which w give to these services.
+- cloudformation we pass configuration files.
+- input to elastic beanstalk is the source code bundle. no configuration or resource file is to be provided
+- beanstalk will decide the infratsrure based on the source code bundle.
+- just upload updated budle and beanstalk will update the deployment as well.
+---------------------------------------------------------------------------
+session 4:
+in cloud formation config file haveing resource information, in bealstalk file would be source code bundle.
+- Now we would dpeloy the docker applciation as a containerin beanstalk.
+- apps running as microservices, dockers can now run as individual Containers as well, havig the correct environment as well.
+- multiple conteirs like app, web and dtabase Container on same server.
+- beanstalk source code bundle fed is index.html file, having static content. docker file will also be fed.
+- manual creation of httpd contianer uisng docker, steps in notes.
+FROM , downloading atest app from doker hub
+COPY the file within the contaier
+Epose the port on container
+
+docker build -t image_ame dockerfile_location
+
+docker run -d --name httpdcontainer -p PORT HOSTPORT:CONTAINERPORT customimage:latest (or image ID)
+
+docker exec -it contianer_id /bin/bash (shell name)
+
+steps we did is what beanstalk is going to do.
+
+------------------------------------------------------------------------------
+- deployment options:
+All at once, rolling, Rolling with additonal batch, immutable.
+- we saw immutable deployment on beanstalk. new instance will get started and old one will get deleted. this is done to minimye outages on the environment.
+- primary and secodnary instances etup to ensure HA for the system as well.
+- pods metrics in hole kuberntes cluster cna be examined and collected.
+
+------------------------------------------------------------------------------
+Blue Green Dpeloyement:
+same as immutable deployment old one are blue new ones will be green, once blue fine green will be decomissioned automatically.
+- action swap URL environents, blue green are used to prevent outages for the customer whne dpeloymet newer application.
+-------------------------------------------------------------------------------
+Managed platform updates:
+-Patch, minor an dmajor version updates.
+- automaticlaly or patch and minor updates.
+- not for major ones.
+- 
+
+- affyional actions and scripts while beanstalk is deployment app, this is done via configuration file.
+- .ebextension, action define which are automaitcally exeuted by beanstalk.
+- for addtional job we created cron job, whcih passed date value to the script as well.
+- .ebsextensrion flder will have extra action needed during deployment process.
+
+------------------------------------------------------------------------------
+- Beantalk is ideal for developers, 
+
+------------------------------------------------------------------------------
+- ECR and ECS
+- Elastic container service and elastic container repository.
+- ECR will be covered today.
+- ECR is managed docker container registry, we have many features:
+- token, repostorym reguistry, repository, images.
+- support private images as wel and environment is totally managed via aws and cloudtrail monitor all activities on it a swlel.
+- we will first cretae public repository on ECR, to store application images.
+- IAM permissions to be given regular nadinline permissions given.
+- connection from intance ti ecr repository, 
+
+--------------------------------------------------------------
+launching and accessing from another ec2 instacne:
+- we upload image to ecr from one system and download the image from ECR to another system.
+- 
