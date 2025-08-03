@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
   const body = await request.json();
   console.log(body);
-  const { title, description, selectedBook } = body;
+  const { title, description, book } = body;
   console.log("THIS IS THE BODY HERE");
 
   const response = await fetch("http://127.0.0.1:5001/MyOffers/create", {
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       Authorization: accessToken,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ title, description, selectedBook }),
+    body: JSON.stringify({ title, description, book }),
     mode: "cors",
   });
 
