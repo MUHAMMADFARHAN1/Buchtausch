@@ -13,6 +13,10 @@ function page() {
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
 
+  const [dataA, setDataA] = useState([]);
+  const [dataB, setDataB] = useState([]);
+  const [activeList, setActiveList] = useState(null); // 'A' or 'B'
+
   useEffect(() => {
     fetch("http://localhost:3000/api/offers")
       .then((res) => {
@@ -32,6 +36,7 @@ function page() {
         // ));
         // setData(listItems);
         setLoading(false); // Fetch done, so set loading to false
+        
         console.log(jsonData);
       })
       .catch((err) => {

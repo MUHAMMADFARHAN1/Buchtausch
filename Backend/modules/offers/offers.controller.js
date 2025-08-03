@@ -41,6 +41,24 @@ export const getOffers = async (request, response) => {
   }
 };
 
+//Basic fetching
+export const getAllOffers = async (request, response) => {
+  try {
+    console.log("Hello");
+    //let userId = request.headers.authorization;
+    // let token = request.headers.authorization;
+    // // Decoding token
+    // let decoded = jwt.verify(token, JWT_KEY);
+    // // Check if user has an account
+    // let user = await User.findById(decoded.id);
+
+    let Offer = await Offers.find().populate("book");
+    return response.send(Offer);
+  } catch (error) {
+    return response.status(500).send("Server Error");
+  }
+};
+
 export const getOffer = async (request, response) => {
   let { id } = request.params;
   console.log(id);

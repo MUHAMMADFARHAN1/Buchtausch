@@ -4,6 +4,7 @@ import {
   getOffer,
   createOffer,
   updateOffer,
+  getAllOffers,
   deleteOffer,
 } from "../modules/offers/offers.controller.js";
 import { AuthGuard, RoleGuard } from "../modules/auth/auth.middleware.js";
@@ -11,6 +12,8 @@ import { AuthGuard, RoleGuard } from "../modules/auth/auth.middleware.js";
 const router = express.Router();
 
 router.get("/", AuthGuard, getOffers);
+
+router.get("/all", AuthGuard, getAllOffers);
 
 router.get("/:id", AuthGuard, getOffer);
 
