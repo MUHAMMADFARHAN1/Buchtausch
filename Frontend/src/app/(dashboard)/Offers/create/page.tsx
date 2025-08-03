@@ -58,36 +58,38 @@ function page() {
       .then((jsonData) => {
         // console.log("Page Fetched");
         // let listItems = jsonData.map((item: any) => setBooks(item.data));
-        setBooks(jsonData);
+        // setBooks(jsonData);
         // setData(listItems);
-        console.log(books);
+        // console.log(books);
         setLoading(false); // Fetch done, so set loading to false
-        console.log(jsonData);
+        // console.log(jsonData);
 
         // Create options list outside JSX
-        console.log("Hello");
+        // console.log("Hello");
 
         setOptions(
           jsonData.map((book: any) => (
-            <option key={book._id}>{book.title}</option>
+            <option key={book._id} value={book._id}>
+              {book.title}
+            </option>
           ))
         );
-        console.log(options);
+        // console.log(options);
 
-        bookOptions =
-          jsonData.length === 0 ? (
-            <option disabled>Loading books...</option>
-          ) : (
-            jsonData.map((book: any) => (
-              <option key={book._id} value={book._id}>
-                {book.title}
-              </option>
-            ))
-          );
+        // bookOptions =
+        //   jsonData.length === 0 ? (
+        //     <option disabled>Loading books...</option>
+        //   ) : (
+        //     jsonData.map((book: any) => (
+        //       <option key={book._id} value={book._id}>
+        //         {book.title}
+        //       </option>
+        //     ))
+        //   );
         // setOptions(bookOptions);
 
-        console.log("Hello");
-        console.log(bookOptions);
+        // console.log("Hello");
+        // console.log(bookOptions);
       })
       .catch((err) => {
         setError(err.message);
@@ -95,8 +97,8 @@ function page() {
       });
   }, []);
 
-  console.log("Books state:", books);
-  console.log("Options state:", options);
+  // console.log("Books state:", books);
+  // console.log("Options state:", options);
 
   const handleTitleChange = (e: any) => {
     setTitle(e.target.value);
@@ -106,7 +108,7 @@ function page() {
     setDescription(e.target.value);
   };
 
-  const handleBookChange = (e: any) => {
+  const handleSelectedBookChange = (e: any) => {
     setSelectedBook(e.target.value);
   };
 
@@ -120,7 +122,7 @@ function page() {
 
     // You can send this data to a backend like this:
 
-    fetch("http://localhost:3000/api/MyOffers/create", {
+    fetch("http://localhost:3000/api/offers/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, description, selectedBook }),
@@ -180,7 +182,11 @@ function page() {
           <label>
             Book:
             <br />
-            <select name="bookdropdown" id="book">
+            <select
+              name="bookdropdown"
+              id="book"
+              onChange={handleSelectedBookChange}
+            >
               <option value="">-- Select a book --</option>
               {options}
             </select>
