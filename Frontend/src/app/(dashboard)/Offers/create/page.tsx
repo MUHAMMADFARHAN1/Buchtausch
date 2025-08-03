@@ -16,11 +16,11 @@ function page() {
     setTitle(e.target.value);
   };
 
-  const handleAuthorChange = (e: any) => {
+  const handleDescriptionChange = (e: any) => {
     setDescription(e.target.value);
   };
 
-  const handleGenreChange = (e: any) => {
+  const handleBookChange = (e: any) => {
     setBook(e.target.value);
   };
 
@@ -76,7 +76,7 @@ function page() {
               type="text"
               name="profileUrl"
               value={description}
-              onChange={handleAuthorChange}
+              onChange={handleDescriptionChange}
             />
           </label>
           {/* <br /> */}
@@ -85,12 +85,11 @@ function page() {
           <label>
             Book:
             <br />
-            <input
-              type="text"
-              name="fullProfileUrl"
-              value={book}
-              onChange={handleGenreChange}
-            />
+            <select name="bookdropdown" id="book">
+              <option value="book1758768">Book One</option>
+              <option value="book2">Book Two</option>
+              <option value="book3">Book Three</option>
+            </select>
           </label>
           <br />
           <br />
