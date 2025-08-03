@@ -29,6 +29,7 @@ function page() {
           <Card offer={item.title} interest="All Interests" _id={item._id} />
           // </Link>
         ));
+        setActiveList(listItems);
         setDataA(listItems);
         setData(listItems);
         // <Card offer="Offer" interest="All Interests" _id></Card>;
