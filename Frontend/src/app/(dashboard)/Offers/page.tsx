@@ -13,8 +13,8 @@ function page() {
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
 
-  const [dataA, setDataA] = useState([]);
-  const [dataB, setDataB] = useState([]);
+  const [dataA, setDataA] = useState(null);
+  const [dataB, setDataB] = useState(null);
   const [activeList, setActiveList] = useState(null); // 'A' or 'B'
 
   useEffect(() => {
@@ -24,17 +24,14 @@ function page() {
         return res.json();
       })
       .then((jsonData) => {
-        // let listItems = jsonData.map((item: any) => (
-        //   <Link href={`/Books/${item._id}`}>
-        //     <Card
-        //       name={item.title}
-        //       author={item.author}
-        //       genre={item.genre}
-        //       button={"check"}
-        //     />
-        //   </Link>
-        // ));
-        // setData(listItems);
+        let listItems = jsonData.map((item: any) => (
+          <Link href={`/Offers/${item._id}`}>
+            <Card offer={item.title} interest="All Interests" _id={item._id} />;
+          </Link>
+        ));
+        setDataA(listItems);
+        setData(listItems);
+        // <Card offer="Offer" interest="All Interests" _id></Card>;
         setLoading(false); // Fetch done, so set loading to false
 
         console.log(jsonData);
@@ -50,17 +47,14 @@ function page() {
         return res.json();
       })
       .then((jsonData) => {
-        // let listItems = jsonData.map((item: any) => (
-        //   <Link href={`/Books/${item._id}`}>
-        //     <Card
-        //       name={item.title}
-        //       author={item.author}
-        //       genre={item.genre}
-        //       button={"check"}
-        //     />
-        //   </Link>
-        // ));
+        let listItems = jsonData.map((item: any) => (
+          <Link href={`/Offers/${item._id}`}>
+            <Card offer={item.title} interest="All Interests" _id={item._id} />;
+          </Link>
+        ));
+        setDataB(listItems);
         // setData(listItems);
+        <Card offer="Offer" interest="Show Interest" />;
         setLoading(false); // Fetch done, so set loading to false
 
         console.log(jsonData);
@@ -93,8 +87,10 @@ function page() {
           </div>
         </div>
         <div className="flex flex-col justify-between pt-8">
-          <Card offer="Offer" interest="Show Interest"></Card>
-          <Card offer="Offer" interest="All Interests"></Card>
+          {dataA}
+          {dataB}
+          {/* <Card offer="Offer" interest="Show Interest"></Card> */}
+          {/* <Card offer="Offer" interest="All Interests"></Card> */}
         </div>
       </div>
     </>
@@ -102,6 +98,3 @@ function page() {
 }
 
 export default page;
-// {
-//   projects.map((project) => <li key={project.id}>{project.name}</li>);
-// }

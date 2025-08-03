@@ -26,7 +26,7 @@ import jwt from "jsonwebtoken";
 //Basic fetching
 export const getOffers = async (request, response) => {
   try {
-    console.log("Hello");
+    // console.log("Hello");
     //let userId = request.headers.authorization;
     let token = request.headers.authorization;
     // Decoding token
@@ -44,7 +44,7 @@ export const getOffers = async (request, response) => {
 //Basic fetching
 export const getAllOffers = async (request, response) => {
   try {
-    console.log("Hello");
+    // console.log("Hello");
     let userId = request.headers.authorization;
     let token = request.headers.authorization;
     // Decoding token
@@ -52,11 +52,11 @@ export const getAllOffers = async (request, response) => {
     // Check if user has an account
     let userc = await User.findById(decoded.id);
 
-    console.log("Before Hello");
+    // console.log("Before Hello");
     let Offer = await Offers.find({
       user: { $ne: userc },
     }).populate("book");
-    console.log("After Hello");
+    // console.log("After Hello");
     return response.send(Offer);
   } catch (error) {
     console.log(error);
@@ -82,7 +82,7 @@ export const getOffer = async (request, response) => {
 
 export const createOffer = async (request, response) => {
   try {
-    console.log("Hello");
+    // console.log("Hello");
     // let { name, description, price, quantity, createdAt } = request.body;
     let { description, title, book } = request.body;
     //let userId = request.headers.authorization;
@@ -91,7 +91,7 @@ export const createOffer = async (request, response) => {
     let decoded = jwt.verify(token, JWT_KEY);
     // Check if user has an account
     let user = await User.findById(decoded.id);
-    console.log("Hello");
+    // console.log("Hello");
 
     //let books = await Book.findById(book);
     //console.log("Hello");
