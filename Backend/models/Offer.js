@@ -13,7 +13,7 @@ const offerSchema = new mongoose.Schema(
     },
     book: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Book",
+      ref: "Books",
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,

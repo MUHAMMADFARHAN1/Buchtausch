@@ -34,9 +34,11 @@ export const getOffers = async (request, response) => {
     // Check if user has an account
     let user = await User.findById(decoded.id);
 
+    console.log("Before Hello");
     let Offer = await Offers.find({ user }).populate("book");
     return response.send(Offer);
   } catch (error) {
+    console.log(error);
     return response.status(500).send("Server Error");
   }
 };
