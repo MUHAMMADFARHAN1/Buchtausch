@@ -45,16 +45,21 @@ export const getOffers = async (request, response) => {
 export const getAllOffers = async (request, response) => {
   try {
     console.log("Hello");
-    //let userId = request.headers.authorization;
-    // let token = request.headers.authorization;
-    // // Decoding token
-    // let decoded = jwt.verify(token, JWT_KEY);
-    // // Check if user has an account
-    // let user = await User.findById(decoded.id);
+    let userId = request.headers.authorization;
+    let token = request.headers.authorization;
+    // Decoding token
+    let decoded = jwt.verify(token, JWT_KEY);
+    // Check if user has an account
+    let userc = await User.findById(decoded.id);
 
-    let Offer = await Offers.find().populate("book");
+    console.log("Before Hello");
+    let Offer = await Offers.find({
+      user: { $ne: userc },
+    }).populate("book");
+    console.log("After Hello");
     return response.send(Offer);
   } catch (error) {
+    console.log(error);
     return response.status(500).send("Server Error");
   }
 };
