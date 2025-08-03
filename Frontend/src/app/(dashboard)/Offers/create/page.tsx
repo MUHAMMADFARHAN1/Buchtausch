@@ -6,11 +6,97 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 function page() {
+  // type Book = {
+  //   _id: string;
+  //   title: string;
+  // };
+  type User = {
+    _id: string;
+    name: string;
+    email: string;
+    city: string;
+    phone: number;
+    password: string;
+    verified: boolean;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
+
+  type Book = {
+    _id: string;
+    title: string;
+    author: string;
+    genre: string;
+    user: User;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [book, setBook] = useState("");
+  const [selectedBook, setSelectedBook] = useState("");
+
+  const [books, setBooks] = useState<Book[]>([]);
+
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
+  const [error, setError] = useState(null);
 
   const router = useRouter();
+  const [options, setOptions] = useState<string[]>([]);
+
+  let bookOptions = <option disabled>Loading books...</option>;
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/books")
+      .then((res) => {
+        if (!res.ok) throw new Error("Fetch failed");
+        return res.json();
+      })
+      .then((jsonData) => {
+        // console.log("Page Fetched");
+        // let listItems = jsonData.map((item: any) => setBooks(item.data));
+        setBooks(jsonData);
+        // setData(listItems);
+        console.log(books);
+        setLoading(false); // Fetch done, so set loading to false
+        console.log(jsonData);
+
+        // Create options list outside JSX
+        console.log("Hello");
+
+        setOptions(
+          jsonData.map((book: any) => (
+            <option key={book._id}>{book.title}</option>
+          ))
+        );
+        console.log(options);
+
+        bookOptions =
+          jsonData.length === 0 ? (
+            <option disabled>Loading books...</option>
+          ) : (
+            jsonData.map((book: any) => (
+              <option key={book._id} value={book._id}>
+                {book.title}
+              </option>
+            ))
+          );
+        // setOptions(bookOptions);
+
+        console.log("Hello");
+        console.log(bookOptions);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  console.log("Books state:", books);
+  console.log("Options state:", options);
 
   const handleTitleChange = (e: any) => {
     setTitle(e.target.value);
@@ -21,7 +107,7 @@ function page() {
   };
 
   const handleBookChange = (e: any) => {
-    setBook(e.target.value);
+    setSelectedBook(e.target.value);
   };
 
   const handleSubmit = (e: any) => {
@@ -30,14 +116,14 @@ function page() {
     // Access the input values from state
     console.log("Submitted title:", title);
     console.log("Submitted author:", description);
-    console.log("Submitted genre:", book);
+    console.log("Submitted genre:", selectedBook);
 
     // You can send this data to a backend like this:
 
     fetch("http://localhost:3000/api/MyOffers/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, description, book }),
+      body: JSON.stringify({ title, description, selectedBook }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -45,6 +131,15 @@ function page() {
       });
     router.push("/Offers");
   };
+
+  if (loading) {
+    // Render this while loading (this blocks showing the rest)
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="grid grid-cols-2 pl-8 pt-4">
@@ -86,9 +181,8 @@ function page() {
             Book:
             <br />
             <select name="bookdropdown" id="book">
-              <option value="book1758768">Book One</option>
-              <option value="book2">Book Two</option>
-              <option value="book3">Book Three</option>
+              <option value="">-- Select a book --</option>
+              {options}
             </select>
           </label>
           <br />
