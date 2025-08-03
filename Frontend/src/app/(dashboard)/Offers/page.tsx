@@ -36,7 +36,33 @@ function page() {
         // ));
         // setData(listItems);
         setLoading(false); // Fetch done, so set loading to false
-        
+
+        console.log(jsonData);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+
+    fetch("http://localhost:3000/api/offers/all")
+      .then((res) => {
+        if (!res.ok) throw new Error("Fetch failed");
+        return res.json();
+      })
+      .then((jsonData) => {
+        // let listItems = jsonData.map((item: any) => (
+        //   <Link href={`/Books/${item._id}`}>
+        //     <Card
+        //       name={item.title}
+        //       author={item.author}
+        //       genre={item.genre}
+        //       button={"check"}
+        //     />
+        //   </Link>
+        // ));
+        // setData(listItems);
+        setLoading(false); // Fetch done, so set loading to false
+
         console.log(jsonData);
       })
       .catch((err) => {
