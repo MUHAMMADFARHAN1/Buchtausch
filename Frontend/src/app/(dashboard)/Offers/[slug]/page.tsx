@@ -32,7 +32,7 @@ function page() {
         console.log(jsonData);
         setTitle(jsonData.title);
         setDescription(jsonData.description);
-        setBook(jsonData.book);
+        setBook(jsonData.book.title);
       })
       .catch((err) => {
         setError(err.message);
