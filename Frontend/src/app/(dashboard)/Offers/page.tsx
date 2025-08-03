@@ -25,9 +25,9 @@ function page() {
       })
       .then((jsonData) => {
         let listItems = jsonData.map((item: any) => (
-          <Link href={`/Offers/${item._id}`}>
-            <Card offer={item.title} interest="All Interests" _id={item._id} />;
-          </Link>
+          // <Link href={`/Offers/${item._id}`}>
+          <Card offer={item.title} interest="All Interests" _id={item._id} />
+          // </Link>
         ));
         setDataA(listItems);
         setData(listItems);
@@ -48,13 +48,13 @@ function page() {
       })
       .then((jsonData) => {
         let listItems = jsonData.map((item: any) => (
-          <Link href={`/Offers/${item._id}`}>
-            <Card offer={item.title} interest="All Interests" _id={item._id} />;
-          </Link>
+          // <Link href={`/Offers/${item._id}`}>
+          <Card offer={item.title} interest="Show Interest" _id={item._id} />
+          // </Link>
         ));
         setDataB(listItems);
         // setData(listItems);
-        <Card offer="Offer" interest="Show Interest" />;
+        // <Card offer="Offer" interest="Show Interest" />;
         setLoading(false); // Fetch done, so set loading to false
 
         console.log(jsonData);
@@ -64,6 +64,9 @@ function page() {
         setLoading(false);
       });
   }, []);
+
+  const handleShowA = () => setActiveList(dataA);
+  const handleShowB = () => setActiveList(dataB);
 
   if (loading) {
     // Render this while loading (this blocks showing the rest)
@@ -78,17 +81,22 @@ function page() {
     <>
       <div className="flex flex-col justify-between mx-8 pt-2">
         <div className="flex flex-row justify-between pt-2">
-          <Button className=" bg-lime-600 rounded">All (not my) Offers</Button>
+          <Button onClick={handleShowB} className=" bg-lime-600 rounded">
+            All (not my) Offers
+          </Button>
           <div className="flex flex-row justify-between gap-2">
             <Link href={`/Offers/create`}>
               <Button className=" bg-lime-600 rounded">Create Offer</Button>
             </Link>
-            <Button className=" bg-lime-600 rounded">My Offers</Button>
+            <Button onClick={handleShowA} className=" bg-lime-600 rounded">
+              My Offers
+            </Button>
           </div>
         </div>
         <div className="flex flex-col justify-between pt-8">
-          {dataA}
-          {dataB}
+          {/* {dataA}
+          {dataB} */}
+          {activeList}
           {/* <Card offer="Offer" interest="Show Interest"></Card> */}
           {/* <Card offer="Offer" interest="All Interests"></Card> */}
         </div>
