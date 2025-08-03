@@ -70,7 +70,7 @@ function page() {
           <br />
 
           <label>
-            Author:
+            Description:
             <br />
             <input
               type="text"
@@ -83,7 +83,7 @@ function page() {
           <br />
 
           <label>
-            Genre:
+            Book:
             <br />
             <input
               type="text"
