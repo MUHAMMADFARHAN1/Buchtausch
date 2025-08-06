@@ -25,9 +25,9 @@ function page() {
       })
       .then((jsonData) => {
         let listItems = jsonData.map((item: any) => (
-          // <Link href={`/Offers/${item._id}`}>
-          <Card offer={item.title} interest="All Interests" _id={item._id} />
-          // </Link>
+          <Link href={`/Offers/allinterests/${item._id}`}>
+            <Card offer={item.title} interest="All Interests" _id={item._id} />
+          </Link>
         ));
         setActiveList(listItems);
         setDataA(listItems);
@@ -49,9 +49,9 @@ function page() {
       })
       .then((jsonData) => {
         let listItems = jsonData.map((item: any) => (
-          // <Link href={`/Offers/${item._id}`}>
-          <Card offer={item.title} interest="Show Interest" _id={item._id} />
-          // </Link>
+          <Link href={`/Offers/showinterest/${item._id}`}>
+            <Card offer={item.title} interest="Show Interest" _id={item._id} />
+          </Link>
         ));
         setDataB(listItems);
         // setData(listItems);

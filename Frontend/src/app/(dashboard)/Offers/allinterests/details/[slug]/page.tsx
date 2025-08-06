@@ -9,6 +9,7 @@ export default async function page() {
   return (
     <>
       <div className="flex flex-col justify-between mx-8 pt-2">
+        <p>The interst can be accepted here</p>
         {/* <div className="flex flex-row justify-between pt-2">
           <Button className=" bg-lime-600 rounded">All (not my) Offers</Button>
           <div className="flex flex-row justify-between gap-2">

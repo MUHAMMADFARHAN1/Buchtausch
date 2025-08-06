@@ -5,7 +5,7 @@ import React from "react";
 function page() {
   return (
     <div>
-      <p>New Challenge</p>
+      <p>All the Interests are here</p>
     </div>
   );
 }
