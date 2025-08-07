@@ -9,7 +9,7 @@ export default function InterestCard(props: any) {
         <div className=" py-2 pl-2 w-45 border-4">{props.offer}</div>
       </div>
       <div className="py-1 pr-4">
-        <Link href={`/Books/${props._id}`}>
+        <Link href={`/Offers/allinterests/details/${props._id}`}>
           <Button className=" bg-lime-600 rounded">Details </Button>
         </Link>
       </div>
