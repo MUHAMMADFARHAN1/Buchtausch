@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-export default function Card(props: any) {
+export default function InterestCard(props: any) {
   return (
     <div className=" bg-white h-12 my-2 rounded flex flex-row justify-between">
       <div className="flex flex-row justify-between gap-10 ml-5">
