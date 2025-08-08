@@ -96,7 +96,7 @@ function page() {
 
     // You can send this data to a backend like this:
 
-    fetch("http://localhost:3000/api/interests/showInterest" + slug, {
+    fetch("http://localhost:3000/api/interests/showInterest/" + slug, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, description, book }),

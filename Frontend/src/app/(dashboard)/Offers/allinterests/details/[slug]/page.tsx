@@ -27,7 +27,7 @@ function page() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/offers/" + slug)
+    fetch("http://localhost:3000/api/interests/details/" + slug)
       .then((res) => {
         if (!res.ok) throw new Error("Fetch failed");
         return res.json();
