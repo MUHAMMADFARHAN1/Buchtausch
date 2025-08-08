@@ -18,7 +18,7 @@ function page() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [book, setBook] = useState("");
+  // const [book, setBook] = useState("");
   const [bookgot, setSelectedBook] = useState("");
 
   // const router = useRouter();
@@ -92,14 +92,14 @@ function page() {
     // Access the input values from state
     console.log("Submitted title:", title);
     console.log("Submitted author:", description);
-    console.log("Submitted genre:", book);
+    console.log("Submitted genre:", bookgot);
 
     // You can send this data to a backend like this:
 
     fetch("http://localhost:3000/api/offers/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, description, book }),
+      body: JSON.stringify({ title, description, bookgot }),
     })
       .then((res) => res.json())
       .then((data) => {
