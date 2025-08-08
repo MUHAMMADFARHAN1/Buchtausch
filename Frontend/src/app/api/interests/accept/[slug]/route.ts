@@ -16,7 +16,7 @@ export async function DELETE(
   let accessToken = session.accessToken;
 
   const response = await fetch(
-    "http://127.0.0.1:5001/Interests/delete/" + slug,
+    "http://127.0.0.1:5001/Interests/accept/" + slug,
     {
       method: "DELETE",
       headers: {

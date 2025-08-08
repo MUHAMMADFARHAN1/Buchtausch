@@ -46,7 +46,7 @@ function page() {
   }, []);
 
   const Delete_Offer = () => {
-    fetch("http://localhost:3000/api/MyOffers/" + slug, {
+    fetch("http://localhost:3000/api/interests/accept/" + slug, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       // body: JSON.stringify({ title, author, }),

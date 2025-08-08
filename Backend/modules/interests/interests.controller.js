@@ -114,7 +114,11 @@ export const showinterest = async (request, response) => {
 export const acceptinterest = async (request, response) => {
   let { interestid } = request.params;
 
-  let interest = await Interest.findByIdAndDelete(interestid);
+  let interest = await Interest.findByIdAndDelete(interestid)
+    .populate("book")
+    .populate("offer")
+    .populate("user_interested");
+  console.log(interest);
   if (!interest) return response.status(404).send("Book not found");
 
   //  const result = await User.findByIdAndDelete(id);
