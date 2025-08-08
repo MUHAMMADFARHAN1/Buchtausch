@@ -16,7 +16,7 @@ const router = express.Router();
 router.get("/:offerid", AuthGuard, getInterests);
 
 //get  interests with interest id
-router.get("/:id", AuthGuard, fetchinterests);
+router.get("/details/:id", AuthGuard, fetchinterests);
 
 //The slug is for findone method not for id where it will work
 //router.get("/:slug", getBook);

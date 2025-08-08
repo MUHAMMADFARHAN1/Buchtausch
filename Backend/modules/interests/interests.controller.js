@@ -87,7 +87,7 @@ export const showinterest = async (request, response) => {
       offer,
       user_interested,
     });
-    response.status(201).send(`Book created successfully`);
+    response.status(201).send(`Interest created successfully`);
   } catch (error) {
     console.log(error.message);
     response.status(500).send("Server Error");
@@ -107,6 +107,7 @@ export const showinterest = async (request, response) => {
 // };
 
 //https://stackoverflow.com/questions/76980190/how-do-i-delete-a-document-in-mongodb-using-mongoose-in-node-js
+// Here in this part, we will also swap the book between the two users as well and then later delete the interest as well.
 export const acceptinterest = async (request, response) => {
   let { interestid } = request.params;
 
