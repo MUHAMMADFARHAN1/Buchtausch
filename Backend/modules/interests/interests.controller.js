@@ -55,6 +55,7 @@ export const fetchinterests = async (request, response) => {
   //The alternative is, this is more performant as well
   //let Book = await Book.find({ id });
   let interest = await Interest.findById(id);
+  // let Book = await Book.find({ id });
   if (!interest) return response.status(404).send("Book not found");
   return response.send(interest);
 };

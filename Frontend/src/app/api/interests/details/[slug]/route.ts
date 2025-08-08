@@ -12,18 +12,19 @@ export async function GET(
   //   if (!book) {
   //     return NextResponse.json({ error: "Book not found" }, { status: 404 });
   //   }
+  console.log("Details are here");
 
   let session: any = await auth();
   console.log(session.accessToken);
   let accessToken = session.accessToken;
 
   const response = await fetch(
-    "http://127.0.0.1:5001/Interests/details" + slug,
+    "http://127.0.0.1:5001/Interests/details/" + slug,
     {
       method: "GET",
       headers: {
         Authorization: accessToken,
-        //  Accept: "application/json",
+        Accept: "application/json",
       },
       mode: "cors",
     }
