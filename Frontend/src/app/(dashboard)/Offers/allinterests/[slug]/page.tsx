@@ -39,7 +39,7 @@ function page() {
       })
       .then((jsonData) => {
         let listItems = jsonData.map((item: any) => (
-          <Link href={`/interests/details/${item._id}`}>
+          <Link href={`/Offers/allinterests/details/${item._id}`}>
             <InterestCard
               offer={item.title}
               // author={item.author}
