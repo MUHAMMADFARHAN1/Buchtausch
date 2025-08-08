@@ -12,9 +12,14 @@ function page() {
   // console.log(slug);
   const router = useRouter();
 
-  const [title, setTitle] = useState("empty");
-  const [description, setDescription] = useState("empty");
-  const [book, setBook] = useState("empty");
+  const [options, setOptions] = useState<string[]>([]);
+
+  let bookOptions = <option disabled>Loading books...</option>;
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [book, setBook] = useState("");
+  const [bookgot, setSelectedBook] = useState("");
 
   // const router = useRouter();
 
@@ -22,17 +27,46 @@ function page() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/offers/" + slug)
+    fetch("http://localhost:3000/api/books")
       .then((res) => {
         if (!res.ok) throw new Error("Fetch failed");
         return res.json();
       })
       .then((jsonData) => {
+        // console.log("Page Fetched");
+        // let listItems = jsonData.map((item: any) => setBooks(item.data));
+        // setBooks(jsonData);
+        // setData(listItems);
+        // console.log(books);
         setLoading(false); // Fetch done, so set loading to false
-        console.log(jsonData);
-        setTitle(jsonData.title);
-        setDescription(jsonData.description);
-        setBook(jsonData.book.title);
+        // console.log(jsonData);
+
+        // Create options list outside JSX
+        // console.log("Hello");
+
+        setOptions(
+          jsonData.map((bookgot: any) => (
+            <option key={bookgot._id} value={bookgot._id}>
+              {bookgot.title}
+            </option>
+          ))
+        );
+        // console.log(options);
+
+        // bookOptions =
+        //   jsonData.length === 0 ? (
+        //     <option disabled>Loading books...</option>
+        //   ) : (
+        //     jsonData.map((book: any) => (
+        //       <option key={book._id} value={book._id}>
+        //         {book.title}
+        //       </option>
+        //     ))
+        //   );
+        // setOptions(bookOptions);
+
+        // console.log("Hello");
+        // console.log(bookOptions);
       })
       .catch((err) => {
         setError(err.message);
@@ -40,17 +74,38 @@ function page() {
       });
   }, []);
 
-  const Delete_Offer = () => {
-    fetch("http://localhost:3000/api/MyOffers/" + slug, {
-      method: "DELETE",
+  const handleTitleChange = (e: any) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescriptionChange = (e: any) => {
+    setDescription(e.target.value);
+  };
+
+  const handleSelectedBookChange = (e: any) => {
+    setSelectedBook(e.target.value);
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault(); // Prevents page reload
+
+    // Access the input values from state
+    console.log("Submitted title:", title);
+    console.log("Submitted author:", description);
+    console.log("Submitted genre:", book);
+
+    // You can send this data to a backend like this:
+
+    fetch("http://localhost:3000/api/offers/create", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      // body: JSON.stringify({ title, author, }),
+      body: JSON.stringify({ title, description, book }),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log("Response:", data);
       });
-    router.push("/Books");
+    router.push("/Offers");
   };
 
   if (loading) {
@@ -68,56 +123,54 @@ function page() {
         <p>Offer</p>
       </div>
       <div className="flex flex-col gap-10 mt-20">
-        {/* <form onSubmit={}> */}
-        <h1>Offer Details</h1>
-        <label>
-          Title:
+        <form onSubmit={handleSubmit}>
+          <h1>Offer Details</h1>
           <br />
-          <input
-            id="name"
-            type="text"
-            name="username"
-            value={title}
-            readOnly
-            // onChange={handleNameChange}
-          />
-        </label>
-        {/* <br /> */}
-        {/* <br /> */}
+          <label>
+            Title:
+            <br />
+            <input
+              id="name"
+              type="text"
+              name="username"
+              value={title}
+              onChange={handleTitleChange}
+            />
+          </label>
+          {/* <br /> */}
+          <br />
 
-        <label>
-          Description:
+          <label>
+            Description:
+            <br />
+            <input
+              type="text"
+              name="profileUrl"
+              value={description}
+              onChange={handleDescriptionChange}
+            />
+          </label>
+          {/* <br /> */}
           <br />
-          <input
-            type="text"
-            name="profileUrl"
-            value={description}
-            readOnly
-            // onChange={handleEmailChange}
-          />
-        </label>
-        {/* <br /> */}
-        {/* <br /> */}
 
-        <label>
-          Book:
+          <label>
+            Book:
+            <br />
+            <select
+              name="bookdropdown"
+              id="book"
+              onChange={handleSelectedBookChange}
+            >
+              <option value="">-- Select a book --</option>
+              {options}
+            </select>
+          </label>
           <br />
-          <input
-            type="text"
-            name="fullProfileUrl"
-            value={book}
-            readOnly
-            // onChange={handleCityChange}
-          />
-        </label>
-        {/* <br /> */}
-        {/* <br /> */}
-        <div>
-          <Button onClick={Delete_Offer} className="mr-2 bg-lime-600">
-            Show Interest
-          </Button>
-        </div>
-        {/* </form> */}
+          <br />
+          <div>
+            <Button className="mr-2 bg-lime-600">Show Interest</Button>
+          </div>
+        </form>
       </div>
     </div>
   );
