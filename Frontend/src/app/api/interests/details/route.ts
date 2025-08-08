@@ -17,14 +17,17 @@ export async function GET(
   console.log(session.accessToken);
   let accessToken = session.accessToken;
 
-  const response = await fetch("http://127.0.0.1:5001/Interests/" + slug, {
-    method: "GET",
-    headers: {
-      Authorization: accessToken,
-      //  Accept: "application/json",
-    },
-    mode: "cors",
-  });
+  const response = await fetch(
+    "http://127.0.0.1:5001/Interests/details" + slug,
+    {
+      method: "GET",
+      headers: {
+        Authorization: accessToken,
+        //  Accept: "application/json",
+      },
+      mode: "cors",
+    }
+  );
 
   const array = await response.json();
   console.log(array);
@@ -32,4 +35,3 @@ export async function GET(
 
   //   return NextResponse.json(book);
 }
-
