@@ -41,9 +41,9 @@ function page() {
         let listItems = jsonData.map((item: any) => (
           <Link href={`/interests/details/${item._id}`}>
             <InterestCard
-              name={item.title}
-              author={item.author}
-              genre={item.genre}
+              offer={item.title}
+              // author={item.author}
+              // genre={item.genre}
               button={"check"}
             />
           </Link>
