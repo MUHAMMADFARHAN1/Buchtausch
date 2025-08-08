@@ -54,8 +54,10 @@ export const fetchinterests = async (request, response) => {
   //let Book = await Book.findOne({ id });
   //The alternative is, this is more performant as well
   //let Book = await Book.find({ id });
-  let interest = await Interest.findById(id);
-  // let Book = await Book.find({ id });
+  let interest = await Interest.findById(id).populate("book");
+  // let check = interest.book;
+  // let book = await Book.findById({ check });
+  // console.log(check);
   if (!interest) return response.status(404).send("Book not found");
   return response.send(interest);
 };

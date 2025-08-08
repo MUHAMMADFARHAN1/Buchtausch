@@ -13,11 +13,11 @@ const interestSchema = new mongoose.Schema(
     },
     book: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Book",
+      ref: "Books",
     },
     offer: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Offer",
+      ref: "Offers",
     },
     user_interested: {
       type: mongoose.Schema.Types.ObjectId,
