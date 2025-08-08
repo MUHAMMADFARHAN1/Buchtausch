@@ -120,11 +120,11 @@ function page() {
   return (
     <div className="grid grid-cols-2 pl-8 pt-4">
       <div className="mt-10">
-        <p>Offer</p>
+        <p>Interest</p>
       </div>
       <div className="flex flex-col gap-10 mt-20">
         <form onSubmit={handleSubmit}>
-          <h1>Offer Details</h1>
+          <h1>Interest Details</h1>
           <br />
           <label>
             Title:
