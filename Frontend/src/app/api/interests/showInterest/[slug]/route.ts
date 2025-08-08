@@ -2,25 +2,32 @@
 import { NextResponse, NextRequest } from "next/server";
 import { auth, signIn, signOut } from "@/auth";
 
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest,
+  { params }: { params: { slug: string } }
+) {
+  const { slug } = params;
   let session: any = await auth();
   console.log(session.accessToken);
   let accessToken = session.accessToken;
 
   const body = await request.json();
   console.log(body);
-  const { title, author, genre } = body;
+  const { title, description, book } = body;
   console.log("THIS IS THE BODY HERE");
 
-  const response = await fetch("http://127.0.0.1:5001/Interests/accept", {
-    method: "POST",
-    headers: {
-      Authorization: accessToken,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ title, author, genre }),
-    mode: "cors",
-  });
+  const response = await fetch(
+    "http://127.0.0.1:5001/Interests/showInterest/" + slug,
+    {
+      method: "POST",
+      headers: {
+        Authorization: accessToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, description, book }),
+      mode: "cors",
+    }
+  );
 
   console.log(response);
   //   const array = await response.json();
