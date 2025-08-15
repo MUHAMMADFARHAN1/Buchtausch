@@ -119,6 +119,14 @@ export const acceptinterest = async (request, response) => {
     .populate("offer")
     .populate("user_interested");
   console.log(interest);
+  //Book Offered
+  console.log(interest.book._id);
+  //Book in interest
+  console.log(interest.offer.book);
+  //Offer id
+  console.log(interest.offer._id);
+  //User Showing interest
+  console.log(interest.user_interested._id);
   // From second level nesting, we will get books to be swapped, delete offer and interest as well
   if (!interest) return response.status(404).send("Book not found");
 
