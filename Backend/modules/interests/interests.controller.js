@@ -121,12 +121,26 @@ export const acceptinterest = async (request, response) => {
   console.log(interest);
   //Book Offered
   console.log(interest.book._id);
+  let book_offered = await Book.findById(interest.book._id);
+  console.log(book_offered);
+
   //Book in interest
   console.log(interest.offer.book);
+
+  let book_interested = await Book.findById(interest.offer.book);
+  console.log(book_interested);
+
   //Offer id
   console.log(interest.offer._id);
+  let Offer = await Offers.findById(interest.offer._id);
+  console.log(Offer);
+
   //User Showing interest
   console.log(interest.user_interested._id);
+
+  let name = await User.findById(interest.user_interested._id);
+  console.log(name);
+
   // From second level nesting, we will get books to be swapped, delete offer and interest as well
   if (!interest) return response.status(404).send("Book not found");
 
