@@ -142,7 +142,7 @@ export const acceptinterest = async (request, response) => {
 
   //Book Offered
   console.log(interest.book._id);
-  let book_offered = await Book.findById(interest.book._id);
+  let book_offered = await Book.findByIdAndDelete(interest.book._id);
   let { title, author, genre } = book_offered;
   await Book.create({
     title,
@@ -151,10 +151,11 @@ export const acceptinterest = async (request, response) => {
     user,
   });
   console.log(book_offered);
+
   {
     //Book in interest
     console.log(interest.offer.book);
-    let book_interested = await Book.findById(interest.offer.book);
+    let book_interested = await Book.findByIdAndDelete(interest.offer.book);
     let { title, author, genre } = book_interested;
     await Book.create({
       title,
@@ -163,6 +164,7 @@ export const acceptinterest = async (request, response) => {
       name,
     });
   }
+
   console.log(book_interested);
 
   // From second level nesting, we will get books to be swapped, delete offer and interest as well
