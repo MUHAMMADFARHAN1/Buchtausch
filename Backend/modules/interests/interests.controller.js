@@ -120,6 +120,11 @@ export const acceptinterest = async (request, response) => {
     .populate("user_interested");
   console.log(interest);
 
+  //Offer id
+  console.log(interest.offer._id);
+  let Offer = await Offers.findByIdAndDelete(interest.offer._id);
+  console.log(Offer);
+
   //User showing Interest
   //let userId = request.headers.authorization;
   let token = request.headers.authorization;
@@ -129,27 +134,36 @@ export const acceptinterest = async (request, response) => {
   let user = await User.findById(decoded.id);
   console.log(user);
 
+  //User having offer
+  console.log(interest.user_interested._id);
+  //User located
+  let name = await User.findById(interest.user_interested._id);
+  console.log(name);
+
   //Book Offered
   console.log(interest.book._id);
   let book_offered = await Book.findById(interest.book._id);
+  let { title, author, genre } = book_offered;
+  await Book.create({
+    title,
+    author,
+    genre,
+    user,
+  });
   console.log(book_offered);
-
-  //Book in interest
-  console.log(interest.offer.book);
-
-  let book_interested = await Book.findById(interest.offer.book);
+  {
+    //Book in interest
+    console.log(interest.offer.book);
+    let book_interested = await Book.findById(interest.offer.book);
+    let { title, author, genre } = book_interested;
+    await Book.create({
+      title,
+      author,
+      genre,
+      name,
+    });
+  }
   console.log(book_interested);
-
-  //Offer id
-  console.log(interest.offer._id);
-  let Offer = await Offers.findById(interest.offer._id);
-  console.log(Offer);
-
-  //User having offer
-  console.log(interest.user_interested._id);
-
-  let name = await User.findById(interest.user_interested._id);
-  console.log(name);
 
   // From second level nesting, we will get books to be swapped, delete offer and interest as well
   if (!interest) return response.status(404).send("Book not found");
