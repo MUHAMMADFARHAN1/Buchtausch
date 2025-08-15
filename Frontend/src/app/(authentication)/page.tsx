@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { login, loginWithGoogle } from "./../../api/auth";
+import { signIn } from "next-auth/react";
 
 export default function page() {
   const FormSchema = z.object({
@@ -30,12 +31,19 @@ export default function page() {
   });
 
   const onSubmit = async (data: IFormInput) => {
-    //console.log(data);
-    try {
-      return await login(data);
-      // return await loginWithGoogle();
-    } catch {
+    const result = await signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect: false, // <- IMPORTANT: prevent auto-redirect
+    });
+
+    if (result?.error) {
+      console.error("Login failed:", result.error);
       alert("Wrong Credentials");
+    } else {
+      console.log("Login successful:", result);
+      // Manually redirect
+      window.location.href = "/Books";
     }
   };
 
