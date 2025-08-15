@@ -119,6 +119,16 @@ export const acceptinterest = async (request, response) => {
     .populate("offer")
     .populate("user_interested");
   console.log(interest);
+
+  //User showing Interest
+  //let userId = request.headers.authorization;
+  let token = request.headers.authorization;
+  // Decoding token
+  let decoded = jwt.verify(token, JWT_KEY);
+  // Check if user has an account
+  let user = await User.findById(decoded.id);
+  console.log(user);
+
   //Book Offered
   console.log(interest.book._id);
   let book_offered = await Book.findById(interest.book._id);
@@ -135,7 +145,7 @@ export const acceptinterest = async (request, response) => {
   let Offer = await Offers.findById(interest.offer._id);
   console.log(Offer);
 
-  //User Showing interest
+  //User having offer
   console.log(interest.user_interested._id);
 
   let name = await User.findById(interest.user_interested._id);
