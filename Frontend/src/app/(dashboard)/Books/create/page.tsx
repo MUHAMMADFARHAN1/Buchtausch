@@ -4,6 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { createBook } from "./../../../actions/bookact";
 
 function page() {
   const [title, setTitle] = useState("");
@@ -24,26 +25,44 @@ function page() {
     setGenre(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault(); // Prevents page reload
+  // const handleSubmit = (e: any) => {
+  //   e.preventDefault(); // Prevents page reload
 
-    // Access the input values from state
-    console.log("Submitted title:", title);
-    console.log("Submitted author:", author);
-    console.log("Submitted genre:", genre);
+  //   // Access the input values from state
+  //   console.log("Submitted title:", title);
+  //   console.log("Submitted author:", author);
+  //   console.log("Submitted genre:", genre);
 
-    // You can send this data to a backend like this:
+  //   // You can send this data to a backend like this:
 
-    fetch("http://localhost:3000/api/books/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, author, genre }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Response:", data);
-      });
-    router.push("/Books");
+  //   fetch("http://localhost:3000/api/books/create", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ title, author, genre }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("Response:", data);
+  //     });
+  //   router.push("/Books");
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent page reload
+
+    try {
+      console.log("Submitted title:", title);
+      console.log("Submitted author:", author);
+      console.log("Submitted genre:", genre);
+
+      const data = await createBook({ title, author, genre }); // call server action
+      console.log("Response:", data);
+
+      router.push("/Books"); // navigate after success
+    } catch (err: any) {
+      console.error(err);
+      // setError(err.message);
+    }
   };
 
   return (

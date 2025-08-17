@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { login, loginWithGoogle } from "./../../api/auth";
+import { login, loginWithGoogle } from "../actions/auth";
 import { signIn } from "next-auth/react";
 
 export default function page() {

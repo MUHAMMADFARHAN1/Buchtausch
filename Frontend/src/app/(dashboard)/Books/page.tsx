@@ -4,7 +4,8 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Card from "@/components/card";
-import fetchDataFromApi from "../../../api/fetchAuth";
+import fetchDataFromApi from "../../actions/fetchAuth";
+import { getBooks } from "./../../actions/bookact";
 
 import { useEffect, useState } from "react";
 
@@ -36,15 +37,40 @@ function page() {
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
 
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/api/books")
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error("Fetch failed");
+  //       return res.json();
+  //     })
+  //     .then((jsonData) => {
+  //       let listItems = jsonData.map((item: any) => (
+  //         <Link href={`/Books/${item._id}`}>
+  //           <Card
+  //             name={item.title}
+  //             author={item.author}
+  //             genre={item.genre}
+  //             button={"check"}
+  //           />
+  //         </Link>
+  //       ));
+  //       setData(listItems);
+  //       setLoading(false); // Fetch done, so set loading to false
+  //       console.log(jsonData);
+  //     })
+  //     .catch((err) => {
+  //       setError(err.message);
+  //       setLoading(false);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch("http://localhost:3000/api/books")
-      .then((res) => {
-        if (!res.ok) throw new Error("Fetch failed");
-        return res.json();
-      })
-      .then((jsonData) => {
-        let listItems = jsonData.map((item: any) => (
-          <Link href={`/Books/${item._id}`}>
+    const fetchBooks = async () => {
+      try {
+        const jsonData = await getBooks(); // call server action directly
+
+        const listItems = jsonData.map((item: any) => (
+          <Link key={item._id} href={`/Books/${item._id}`}>
             <Card
               name={item.title}
               author={item.author}
@@ -53,14 +79,17 @@ function page() {
             />
           </Link>
         ));
+
         setData(listItems);
-        setLoading(false); // Fetch done, so set loading to false
+        setLoading(false);
         console.log(jsonData);
-      })
-      .catch((err) => {
+      } catch (err: any) {
         setError(err.message);
         setLoading(false);
-      });
+      }
+    };
+
+    fetchBooks();
   }, []);
 
   if (loading) {

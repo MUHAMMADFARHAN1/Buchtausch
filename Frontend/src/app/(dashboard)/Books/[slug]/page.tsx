@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { getBook, deleteBook } from "@/app/actions/bookact";
 
 function page() {
   const params = useParams();
-  const slug = params.slug; // returns '123' from /profile/123
+  const slug: any = params.slug; // returns '123' from /profile/123
   // console.log(slug);
   const router = useRouter();
 
@@ -21,36 +22,67 @@ function page() {
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
 
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/api/books/" + slug)
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error("Fetch failed");
+  //       return res.json();
+  //     })
+  //     .then((jsonData) => {
+  //       setLoading(false); // Fetch done, so set loading to false
+  //       console.log(jsonData);
+  //       setTitle(jsonData.title);
+  //       setAuthor(jsonData.author);
+  //       setGenre(jsonData.genre);
+  //     })
+  //     .catch((err) => {
+  //       setError(err.message);
+  //       setLoading(false);
+  //     });
+  // }, []);
+
+  // const Delete_Book = () => {
+  //   fetch("http://localhost:3000/api/books/" + slug, {
+  //     method: "DELETE",
+  //     headers: { "Content-Type": "application/json" },
+  //     // body: JSON.stringify({ title, author, }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("Response:", data);
+  //     });
+  //   router.push("/Books");
+  // };
+
+  // Fetch book details
   useEffect(() => {
-    fetch("http://localhost:3000/api/books/" + slug)
-      .then((res) => {
-        if (!res.ok) throw new Error("Fetch failed");
-        return res.json();
-      })
-      .then((jsonData) => {
-        setLoading(false); // Fetch done, so set loading to false
+    async function fetchBook() {
+      try {
+        const jsonData = await getBook(slug); // call server action
         console.log(jsonData);
         setTitle(jsonData.title);
         setAuthor(jsonData.author);
         setGenre(jsonData.genre);
-      })
-      .catch((err) => {
+      } catch (err: any) {
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    }
 
-  const Delete_Book = () => {
-    fetch("http://localhost:3000/api/books/" + slug, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      // body: JSON.stringify({ title, author, }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Response:", data);
-      });
-    router.push("/Books");
+    fetchBook();
+  }, [slug]);
+
+  // Delete book
+  const Delete_Book = async () => {
+    try {
+      const data = await deleteBook(slug); // call server action
+      console.log("Response:", data);
+      router.push("/Books");
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message);
+    }
   };
 
   if (loading) {

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 
 import Menu from "../../components/menu";
 import Sidebar from "@/components/sidebar";
-import { isAuthenticated } from "@/api/auth";
+import { isAuthenticated } from "@/app/actions/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

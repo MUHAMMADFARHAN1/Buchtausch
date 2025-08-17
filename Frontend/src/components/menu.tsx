@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { logout } from "@/api/auth";
+import { logout } from "@/app/actions/auth";
 import Image from "next/image";
 import favicon from "./../../../Assests/favicon_io/favicon12.png";
 
