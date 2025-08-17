@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { getOfferBySlug } from "@/app/actions/offer";
 
 function page() {
   const params = useParams();
-  const slug = params.slug; // returns '123' from /profile/123
+  const slug: any = params.slug; // returns '123' from /profile/123
   // console.log(slug);
   const router = useRouter();
 
@@ -21,37 +22,60 @@ function page() {
   const [loading, setLoading] = useState(true); // Initially true, so "loading" screen shows
   const [error, setError] = useState(null);
 
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/api/offers/" + slug)
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error("Fetch failed");
+  //       return res.json();
+  //     })
+  //     .then((jsonData) => {
+  //       setLoading(false); // Fetch done, so set loading to false
+  //       console.log(jsonData);
+  //       setTitle(jsonData.title);
+  //       setDescription(jsonData.description);
+  //       setBook(jsonData.book.title);
+  //     })
+  //     .catch((err) => {
+  //       setError(err.message);
+  //       setLoading(false);
+  //     });
+  // }, []);
+
+  // const Delete_Offer = () => {
+  //   fetch("http://localhost:3000/api/MyOffers/" + slug, {
+  //     method: "DELETE",
+  //     headers: { "Content-Type": "application/json" },
+  //     // body: JSON.stringify({ title, author, }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("Response:", data);
+  //     });
+  //   router.push("/Books");
+  // };
+
   useEffect(() => {
-    fetch("http://localhost:3000/api/offers/" + slug)
-      .then((res) => {
-        if (!res.ok) throw new Error("Fetch failed");
-        return res.json();
-      })
-      .then((jsonData) => {
-        setLoading(false); // Fetch done, so set loading to false
-        console.log(jsonData);
-        setTitle(jsonData.title);
-        setDescription(jsonData.description);
-        setBook(jsonData.book.title);
+    getOfferBySlug(slug)
+      .then((data: any) => {
+        setTitle(data.title);
+        setDescription(data.description);
+        setBook(data.book.title);
+        setLoading(false);
       })
       .catch((err) => {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [slug]);
 
-  const Delete_Offer = () => {
-    fetch("http://localhost:3000/api/MyOffers/" + slug, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      // body: JSON.stringify({ title, author, }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Response:", data);
-      });
-    router.push("/Books");
-  };
+  // const handleDelete = async () => {
+  //   try {
+  //     await deleteOffer(slug);
+  //     router.push("/Books");
+  //   } catch (err: any) {
+  //     console.error("Delete failed:", err.message);
+  //   }
+  // };
 
   if (loading) {
     // Render this while loading (this blocks showing the rest)
@@ -112,11 +136,11 @@ function page() {
         </label>
         {/* <br /> */}
         {/* <br /> */}
-        <div>
+        {/* <div>
           <Button onClick={Delete_Offer} className="mr-2 bg-lime-600">
             Delete
           </Button>
-        </div>
+        </div> */}
         {/* </form> */}
       </div>
     </div>
