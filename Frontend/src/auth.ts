@@ -17,7 +17,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // 	credentials.password as string
         // );
         try {
-          let response = await fetch("http://localhost:5001/auth/login", {
+          let response = await fetch(process.env.BACKEND_API + "/auth/login", {
             method: "POST",
             body: JSON.stringify(credentials),
             headers: {
