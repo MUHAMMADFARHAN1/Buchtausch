@@ -4,7 +4,6 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Card from "@/components/card";
-import fetchDataFromApi from "../../actions/fetchAuth";
 import { getBooks } from "./../../actions/bookact";
 
 import { useEffect, useState } from "react";
