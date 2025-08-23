@@ -6,10 +6,11 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { getBooks } from "@/app/actions/bookact";
+import { postInterest } from "@/app/actions/interest";
 
 function page() {
   const params = useParams();
-  const slug = params.slug; // returns '123' from /profile/123
+  const slug: any = params.slug; // returns '123' from /profile/123
   // console.log(slug);
   const router = useRouter();
 
@@ -115,15 +116,28 @@ function page() {
 
     // You can send this data to a backend like this:
 
-    fetch("http://localhost:3000/api/interests/showInterest/" + slug, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, description, book }),
+    // fetch("http://localhost:3000/api/interests/showInterest/" + slug, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ title, description, book }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log("Response:", data);
+    //   });
+
+    postInterest(slug, {
+      title,
+      description,
+      book,
     })
-      .then((res) => res.json())
       .then((data) => {
         console.log("Response:", data);
+      })
+      .catch((err) => {
+        console.error("Error:", err.message);
       });
+
     router.push("/Offers");
   };
 
