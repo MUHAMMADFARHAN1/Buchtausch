@@ -4,6 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { getBooks } from "@/app/actions/bookact";
 
 function page() {
   // type Book = {
@@ -50,12 +51,8 @@ function page() {
   let bookOptions = <option disabled>Loading books...</option>;
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/books")
-      .then((res) => {
-        if (!res.ok) throw new Error("Fetch failed");
-        return res.json();
-      })
-      .then((jsonData) => {
+    getBooks()
+      .then((jsonData: any) => {
         // console.log("Page Fetched");
         // let listItems = jsonData.map((item: any) => setBooks(item.data));
         // setBooks(jsonData);
@@ -96,6 +93,54 @@ function page() {
         setLoading(false);
       });
   }, []);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/api/books")
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error("Fetch failed");
+  //       return res.json();
+  //     })
+  //     .then((jsonData) => {
+  //       // console.log("Page Fetched");
+  //       // let listItems = jsonData.map((item: any) => setBooks(item.data));
+  //       // setBooks(jsonData);
+  //       // setData(listItems);
+  //       // console.log(books);
+  //       setLoading(false); // Fetch done, so set loading to false
+  //       // console.log(jsonData);
+
+  //       // Create options list outside JSX
+  //       // console.log("Hello");
+
+  //       setOptions(
+  //         jsonData.map((book: any) => (
+  //           <option key={book._id} value={book._id}>
+  //             {book.title}
+  //           </option>
+  //         ))
+  //       );
+  //       // console.log(options);
+
+  //       // bookOptions =
+  //       //   jsonData.length === 0 ? (
+  //       //     <option disabled>Loading books...</option>
+  //       //   ) : (
+  //       //     jsonData.map((book: any) => (
+  //       //       <option key={book._id} value={book._id}>
+  //       //         {book.title}
+  //       //       </option>
+  //       //     ))
+  //       //   );
+  //       // setOptions(bookOptions);
+
+  //       // console.log("Hello");
+  //       // console.log(bookOptions);
+  //     })
+  //     .catch((err) => {
+  //       setError(err.message);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   // console.log("Books state:", books);
   // console.log("Options state:", options);
