@@ -8,6 +8,10 @@ import userOffers from "./routers/offers.router.js";
 import userInterests from "./routers/interests.router.js";
 import { startDatabase } from "./config/db.js";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+
+const PORT = process.env.PORT;
 
 const app = express();
 
@@ -25,7 +29,7 @@ app.use("/MyOffers", userOffers);
 // app.use("/AllOffers", userRouter);
 app.use("/Interests", userInterests);
 
-app.listen(5001, async () => {
+app.listen(PORT, async () => {
   await startDatabase();
   console.log("Server is running");
 });

@@ -1,0 +1,14 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+# Copy .env (Docker Compose will override it anyway, but useful for local builds)
+COPY .env .env
+
+EXPOSE 5000
+CMD ["npm", "start"]
