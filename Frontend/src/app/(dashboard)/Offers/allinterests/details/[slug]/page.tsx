@@ -8,7 +8,7 @@ import Card from "@/components/InterestCard";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { deleteInterest } from "@/app/actions/interest";
+import { deleteInterest, getInterestDetails } from "@/app/actions/interest";
 
 //https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods
 
@@ -28,13 +28,26 @@ function page() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/interests/details/" + slug)
-      .then((res) => {
-        if (!res.ok) throw new Error("Fetch failed");
-        return res.json();
-      })
-      .then((jsonData) => {
-        setLoading(false); // Fetch done, so set loading to false
+    // fetch("http://localhost:3000/api/interests/details/" + slug)
+    //   .then((res) => {
+    //     if (!res.ok) throw new Error("Fetch failed");
+    //     return res.json();
+    //   })
+    //   .then((jsonData) => {
+    //     setLoading(false); // Fetch done, so set loading to false
+    //     console.log(jsonData);
+    //     setTitle(jsonData.title);
+    //     setDescription(jsonData.description);
+    //     setBook(jsonData.book.title);
+    //   })
+    //   .catch((err) => {
+    //     setError(err.message);
+    //     setLoading(false);
+    //   });
+
+    getInterestDetails(slug)
+      .then((jsonData: any) => {
+        setLoading(false);
         console.log(jsonData);
         setTitle(jsonData.title);
         setDescription(jsonData.description);
