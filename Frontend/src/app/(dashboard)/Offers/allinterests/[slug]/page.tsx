@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Card from "@/components/card";
+import { getInterest } from "@/app/actions/interest";
 
 import { useEffect, useState } from "react";
 
@@ -23,7 +24,7 @@ function page() {
   // export default page;
 
   const params = useParams();
-  const slug = params.slug; // returns '123' from /profile/123
+  const slug: any = params.slug; // returns '123' from /profile/123
   // console.log(slug);
   const router = useRouter();
 
@@ -32,25 +33,44 @@ function page() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/interests/" + slug)
-      .then((res) => {
-        if (!res.ok) throw new Error("Fetch failed");
-        return res.json();
-      })
-      .then((jsonData) => {
-        let listItems = jsonData.map((item: any) => (
-          <Link href={`/Offers/allinterests/details/${item._id}`}>
-            <InterestCard
-              offer={item.title}
-              // author={item.author}
-              // genre={item.genre}
-              button={"check"}
-            />
+    // fetch("http://localhost:3000/api/interests/" + slug)
+    //   .then((res) => {
+    //     if (!res.ok) throw new Error("Fetch failed");
+    //     return res.json();
+    //   })
+    //   .then((jsonData) => {
+    //     let listItems = jsonData.map((item: any) => (
+    //       <Link href={`/Offers/allinterests/details/${item._id}`}>
+    //         <InterestCard
+    //           offer={item.title}
+    //           // author={item.author}
+    //           // genre={item.genre}
+    //           button={"check"}
+    //         />
+    //       </Link>
+    //     ));
+    //     setData(listItems);
+    //     console.log(jsonData);
+    //     setLoading(false); // Fetch done, so set loading to false
+    //     console.log(jsonData);
+    //   })
+    //   .catch((err) => {
+    //     setError(err.message);
+    //     setLoading(false);
+    //   });
+
+    getInterest(slug)
+      .then((jsonData: any) => {
+        const listItems = jsonData.map((item: any) => (
+          <Link
+            href={`/Offers/allinterests/details/${item._id}`}
+            key={item._id}
+          >
+            <InterestCard offer={item.title} button="check" />
           </Link>
         ));
         setData(listItems);
-        console.log(jsonData);
-        setLoading(false); // Fetch done, so set loading to false
+        setLoading(false);
         console.log(jsonData);
       })
       .catch((err) => {
