@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getBooks } from "@/app/actions/bookact";
+import { createOffer } from "@/app/actions/offer";
 
 function page() {
   // type Book = {
@@ -167,15 +168,28 @@ function page() {
 
     // You can send this data to a backend like this:
 
-    fetch("http://localhost:3000/api/offers/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, description, book }),
+    // fetch("http://localhost:3000/api/offers/create", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ title, description, book }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log("Response:", data);
+    //   });
+
+    createOffer({
+      title,
+      description,
+      book,
     })
-      .then((res) => res.json())
       .then((data) => {
         console.log("Response:", data);
+      })
+      .catch((err) => {
+        console.error("Error:", err.message);
       });
+
     router.push("/Offers");
   };
 
