@@ -8,7 +8,7 @@ import Card from "@/components/InterestCard";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { deleteInterest, getInterestDetails } from "@/app/actions/interest";
+import { deleteInterest } from "@/app/actions/interest";
 
 //https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods
 
@@ -28,46 +28,43 @@ function page() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    //   fetch("http://localhost:3000/api/interests/details/" + slug)
-    //     .then((res) => {
-    //       if (!res.ok) throw new Error("Fetch failed");
-    //       return res.json();
-    //     })
-    //     .then((jsonData) => {
-    //       setLoading(false); // Fetch done, so set loading to false
-    //       console.log(jsonData);
-    //       setTitle(jsonData.title);
-    //       setDescription(jsonData.description);
-    //       setBook(jsonData.book.title);
-    //     })
-    //     .catch((err) => {
-    //       setError(err.message);
-    //       setLoading(false);
-    //     });
-    // }
-
-    getInterestDetails(slug)
-      .then((jsonData: any) => {
-        setLoading(false);
+    fetch("http://localhost:3000/api/interests/details/" + slug)
+      .then((res) => {
+        if (!res.ok) throw new Error("Fetch failed");
+        return res.json();
+      })
+      .then((jsonData) => {
+        setLoading(false); // Fetch done, so set loading to false
         console.log(jsonData);
         setTitle(jsonData.title);
         setDescription(jsonData.description);
         setBook(jsonData.book.title);
       })
-      .catch((err: any) => {
+      .catch((err) => {
         setError(err.message);
         setLoading(false);
       });
   }, []);
 
   const Delete_Offer = () => {
+    // fetch("http://localhost:3000/api/interests/accept/" + slug, {
+    //   method: "DELETE",
+    //   headers: { "Content-Type": "application/json" },
+    //   // body: JSON.stringify({ title, author, }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log("Response:", data);
+    //   });
+
     deleteInterest(slug)
-      .then((data) => {
+      .then((data: any) => {
         console.log("Response:", data);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.error("Delete error:", err.message);
       });
+
     router.push("/Books");
   };
 
