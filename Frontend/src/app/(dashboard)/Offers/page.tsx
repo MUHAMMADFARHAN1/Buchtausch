@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Card from "@/components/MofferCard";
 import { useEffect, useState } from "react";
+import { getMyOffers, getAllOffers } from "@/app/actions/offer";
 
 //https://nextjs.org/docs/app/guides/migrating/app-router-migration#step-6-migrating-data-fetching-methods
 
@@ -18,46 +19,35 @@ function page() {
   const [activeList, setActiveList] = useState(null); // 'A' or 'B'
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/offers")
-      .then((res) => {
-        if (!res.ok) throw new Error("Fetch failed");
-        return res.json();
-      })
-      .then((jsonData) => {
+    // First fetch: /offers
+    getMyOffers()
+      .then((jsonData: any) => {
         let listItems = jsonData.map((item: any) => (
-          <Link href={`/Offers/allinterests/${item._id}`}>
+          <Link key={item._id} href={`/Offers/allinterests/${item._id}`}>
             <Card offer={item.title} interest="All Interests" _id={item._id} />
           </Link>
         ));
         setActiveList(listItems);
         setDataA(listItems);
         setData(listItems);
-        // <Card offer="Offer" interest="All Interests" _id></Card>;
-        setLoading(false); // Fetch done, so set loading to false
-
+        setLoading(false);
         console.log(jsonData);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         setError(err.message);
         setLoading(false);
       });
 
-    fetch("http://localhost:3000/api/offers/all")
-      .then((res) => {
-        if (!res.ok) throw new Error("Fetch failed");
-        return res.json();
-      })
-      .then((jsonData) => {
+    // Second fetch: /offers/all
+    getAllOffers()
+      .then((jsonData: any) => {
         let listItems = jsonData.map((item: any) => (
-          <Link href={`/Offers/showinterest/${item._id}`}>
+          <Link key={item._id} href={`/Offers/showinterest/${item._id}`}>
             <Card offer={item.title} interest="Show Interest" _id={item._id} />
           </Link>
         ));
         setDataB(listItems);
-        // setData(listItems);
-        // <Card offer="Offer" interest="Show Interest" />;
-        setLoading(false); // Fetch done, so set loading to false
-
+        setLoading(false);
         console.log(jsonData);
       })
       .catch((err) => {
@@ -65,6 +55,55 @@ function page() {
         setLoading(false);
       });
   }, []);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/api/offers")
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error("Fetch failed");
+  //       return res.json();
+  //     })
+  //     .then((jsonData) => {
+  //       let listItems = jsonData.map((item: any) => (
+  //         <Link href={`/Offers/allinterests/${item._id}`}>
+  //           <Card offer={item.title} interest="All Interests" _id={item._id} />
+  //         </Link>
+  //       ));
+  //       setActiveList(listItems);
+  //       setDataA(listItems);
+  //       setData(listItems);
+  //       // <Card offer="Offer" interest="All Interests" _id></Card>;
+  //       setLoading(false); // Fetch done, so set loading to false
+
+  //       console.log(jsonData);
+  //     })
+  //     .catch((err) => {
+  //       setError(err.message);
+  //       setLoading(false);
+  //     });
+
+  //   fetch("http://localhost:3000/api/offers/all")
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error("Fetch failed");
+  //       return res.json();
+  //     })
+  //     .then((jsonData) => {
+  //       let listItems = jsonData.map((item: any) => (
+  //         <Link href={`/Offers/showinterest/${item._id}`}>
+  //           <Card offer={item.title} interest="Show Interest" _id={item._id} />
+  //         </Link>
+  //       ));
+  //       setDataB(listItems);
+  //       // setData(listItems);
+  //       // <Card offer="Offer" interest="Show Interest" />;
+  //       setLoading(false); // Fetch done, so set loading to false
+
+  //       console.log(jsonData);
+  //     })
+  //     .catch((err) => {
+  //       setError(err.message);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   const handleShowA = () => setActiveList(dataA);
   const handleShowB = () => setActiveList(dataB);
