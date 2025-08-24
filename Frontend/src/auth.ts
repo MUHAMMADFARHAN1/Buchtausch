@@ -40,6 +40,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
   },
   secret: process.env.AUTH_SECRET,
+  // trustHost: process.env.NODE_ENV === "development",
+  trustHost: true,
   jwt: {
     async encode(params) {
       // params.token is the token returned in the jwt callback

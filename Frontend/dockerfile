@@ -9,7 +9,7 @@ RUN npm install
 COPY . .
 
 # Copy env (must include only NEXT_PUBLIC_* vars)
-COPY .env.local .env.local
+COPY .env.docker .env.docker
 
 RUN npm run build
 
