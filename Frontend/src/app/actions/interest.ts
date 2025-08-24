@@ -1,5 +1,6 @@
 "use server";
 import { auth } from "@/auth";
+import { BACKEND_API } from "./variables.js";
 
 // Helper to fetch with authentication
 async function fetchWithAuth(url: string, options: RequestInit = {}) {
@@ -29,7 +30,7 @@ async function parseResponse(response: Response) {
 // POST: Show interest
 export async function postInterest(slug: string, body: any) {
   const response = await fetchWithAuth(
-    `http://127.0.0.1:5001/Interests/showInterest/${slug}`,
+    BACKEND_API + `/Interests/showInterest/${slug}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -42,7 +43,7 @@ export async function postInterest(slug: string, body: any) {
 // GET: Interest details by slug
 export async function getInterestDetails(slug: string) {
   const response = await fetchWithAuth(
-    `http://127.0.0.1:5001/Interests/details/${slug}`,
+    BACKEND_API + `/Interests/details/${slug}`,
     { method: "GET", headers: { Accept: "application/json" } }
   );
   return await parseResponse(response);
@@ -51,7 +52,7 @@ export async function getInterestDetails(slug: string) {
 // DELETE: Accept/Remove interest by slug
 export async function deleteInterest(slug: string) {
   const response = await fetchWithAuth(
-    `http://127.0.0.1:5001/Interests/accept/${slug}`,
+    BACKEND_API + `/Interests/accept/${slug}`,
     { method: "DELETE" }
   );
   return await parseResponse(response);
@@ -59,9 +60,8 @@ export async function deleteInterest(slug: string) {
 
 // GET: Generic interest fetch by slug
 export async function getInterest(slug: string) {
-  const response = await fetchWithAuth(
-    `http://127.0.0.1:5001/Interests/${slug}`,
-    { method: "GET" }
-  );
+  const response = await fetchWithAuth(BACKEND_API + `/Interests/${slug}`, {
+    method: "GET",
+  });
   return await parseResponse(response);
 }

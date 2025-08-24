@@ -1,13 +1,14 @@
 "use server";
 
 import { auth, signIn, signOut } from "@/auth";
+import { BACKEND_API } from "./variables.js";
 
 export async function getBooks() {
   let session: any = await auth();
   console.log(session.accessToken);
   let accessToken = session.accessToken;
 
-  const response = await fetch("http://127.0.0.1:5001/Books/", {
+  const response = await fetch(BACKEND_API + "/Books/", {
     method: "GET",
     headers: {
       Authorization: accessToken,
@@ -35,7 +36,7 @@ export async function createBook({ title, author, genre }: CreateBookInput) {
     throw new Error("User is not authenticated");
   }
 
-  const response = await fetch("http://127.0.0.1:5001/books/create", {
+  const response = await fetch(BACKEND_API + "/books/create", {
     method: "POST",
     headers: {
       Authorization: accessToken,
@@ -67,7 +68,7 @@ export async function getBook(slug: string) {
     throw new Error("User is not authenticated");
   }
 
-  const response = await fetch(`http://127.0.0.1:5001/Books/${slug}`, {
+  const response = await fetch(BACKEND_API + `/Books/${slug}`, {
     method: "GET",
     headers: {
       Authorization: accessToken,
@@ -97,7 +98,7 @@ export async function deleteBook(slug: string) {
     throw new Error("User is not authenticated");
   }
 
-  const response = await fetch(`http://127.0.0.1:5001/books/delete/${slug}`, {
+  const response = await fetch(BACKEND_API + `/books/delete/${slug}`, {
     method: "DELETE",
     headers: {
       Authorization: accessToken,

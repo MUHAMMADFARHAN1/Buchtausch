@@ -1,5 +1,6 @@
 "use server";
 import { auth } from "@/auth";
+import { BACKEND_API } from "./variables.js";
 
 interface OfferCreate {
   title: string;
@@ -25,7 +26,7 @@ export async function getMyOffers() {
   const accessToken = session?.accessToken;
   if (!accessToken) throw new Error("User not authenticated");
 
-  const response = await fetch("http://127.0.0.1:5001/MyOffers", {
+  const response = await fetch(BACKEND_API + "/MyOffers", {
     method: "GET",
     headers: { Authorization: accessToken },
     mode: "cors",
@@ -39,7 +40,7 @@ export async function createOffer({ title, description, book }: OfferCreate) {
   const accessToken = session?.accessToken;
   if (!accessToken) throw new Error("User not authenticated");
 
-  const response = await fetch("http://127.0.0.1:5001/MyOffers/create", {
+  const response = await fetch(BACKEND_API + "/MyOffers/create", {
     method: "POST",
     headers: {
       Authorization: accessToken,
@@ -57,7 +58,7 @@ export async function getAllOffers() {
   const accessToken = session?.accessToken;
   if (!accessToken) throw new Error("User not authenticated");
 
-  const response = await fetch("http://127.0.0.1:5001/MyOffers/all", {
+  const response = await fetch(BACKEND_API + "/MyOffers/all", {
     method: "GET",
     headers: { Authorization: accessToken },
     mode: "cors",
@@ -71,7 +72,7 @@ export async function getOfferBySlug(slug: string) {
   const accessToken = session?.accessToken;
   if (!accessToken) throw new Error("User not authenticated");
 
-  const response = await fetch(`http://127.0.0.1:5001/MyOffers/${slug}`, {
+  const response = await fetch(BACKEND_API + `/MyOffers/${slug}`, {
     method: "GET",
     headers: { Authorization: accessToken },
     mode: "cors",

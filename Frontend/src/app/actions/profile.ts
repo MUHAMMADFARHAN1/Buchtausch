@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
+import { BACKEND_API } from "./variables.js";
 
 export async function getProfile() {
   const session: any = await auth();
@@ -10,7 +11,7 @@ export async function getProfile() {
     throw new Error("User is not authenticated");
   }
 
-  const response = await fetch("http://127.0.0.1:5001/Profile/", {
+  const response = await fetch(BACKEND_API + "/Profile/", {
     method: "GET",
     headers: {
       Authorization: accessToken,
@@ -51,7 +52,7 @@ export async function updateProfile({
     throw new Error("User is not authenticated");
   }
 
-  const response = await fetch("http://127.0.0.1:5001/Profile/update", {
+  const response = await fetch(BACKEND_API + "/Profile/update", {
     method: "PUT",
     headers: {
       Authorization: accessToken,
